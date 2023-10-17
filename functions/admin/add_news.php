@@ -26,8 +26,8 @@
                     <div style="display: flex; align-items: center; flex-direction: column;">
                         <h1>Добавление новости</h1>
                         <input name="name" type="text" required placeholder="Введите заголовок">
-                        <input name="date" type="text" required placeholder="Введите даты">
-                        <textarea name="description" required type="text" placeholder="Введите описание (для формирования абзаца указывайте <br> в нужном месте в тексте)"></textarea>
+                        <input name="date" type="text" placeholder="Введите даты или подзаголовок, если есть">
+                        <textarea name="description" required type="text" placeholder="Введите основной текст"></textarea>
                         <div style="display: flex; flex-wrap: wrap; width: 500px; flex-direction: column; align-items: center; margin-top: 10px;">
                             <input id = "input_example" type="file"  name="example">
                             <button id="input_button_example" ' . 'onclick="document.getElementById('. " 'input_example').click() " . '  " type="button">Выберите файл</button>
@@ -57,7 +57,13 @@ if (isset($_POST['upload_btn'])) {
         } else {
             $name = $_POST['name'];
             $date = $_POST['date'];
+            
+            if ($date == "") {
+                $date = " ";
+            }
+
             $description = $_POST['description'];
+            $description = preg_replace('/\n/i','<br>',$description);
             $img = basename($_FILES['example']['name']);
             $sql = $pdo->prepare("INSERT INTO news(`name`, `date`, `text`, `image`) VALUES (?, ?, ?, ?);");
             $dbg = $sql->execute([$name, $date, $description, $img]);
