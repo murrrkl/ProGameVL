@@ -28,7 +28,7 @@
 <?php endif ?>
 
 <?php
-    $stmt = $pdo->query('SELECT * FROM news');
+    $stmt = $pdo->query('SELECT * FROM `news` ORDER BY `news`.`id` DESC');
     $res = $stmt->fetchAll();
 
     echo "<div style='display: flex; justify-content: center;'> <div style=' text-align: left; background-color: white; width: auto; margin-top: 40px; border-radius: 30px; '><table id = 'database'><tr><th>Заголовок </th><th> Дата </th><th> Текст </th> <th> Изображение </th><th></th></tr>";
