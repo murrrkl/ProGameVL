@@ -78,7 +78,7 @@
             echo "Connection failed: " . $e->getMessage();
         }
 
-        $stmt = $pdo->query('SELECT * FROM news');
+        $stmt = $pdo->query('SELECT * FROM `news` ORDER BY `news`.`id` DESC');
         $res = $stmt->fetchAll();
 
         foreach($res as $row) {
