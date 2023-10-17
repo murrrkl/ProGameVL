@@ -5,6 +5,7 @@
 
     try {
         // подключаемся к серверу
+        // utf8mb4_general_ci	
         $pdo = new PDO("mysql:host=localhost; charset=utf8mb4; dbname=$db", $user, $pass);
     }
     catch (PDOException $e) {
