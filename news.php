@@ -72,7 +72,7 @@
 
         try {
             // подключаемся к серверу
-            $pdo = new PDO("mysql:host=localhost; charset=utf8; dbname=$db", $user, $pass);
+            $pdo = new PDO("mysql:host=localhost; charset=utf8mb4; dbname=$db", $user, $pass);
         }
         catch (PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
