@@ -14,7 +14,8 @@
 
 <?php
 
-    echo '<body>
+    echo '
+        <body>
             <header>
                 <div class="header">
                     <a class = "menu" href="./account.php">Главная</a>
@@ -22,11 +23,19 @@
                 </div>
             </header>
             <main style = "display: flex; flex-direction: column;  height: 100vh; align-items: center; margin-top: 200px;">
+                <h1 style = "color: #0D244F; width: 100%; text-align: center; font-size: 25px; margin-bottom: 15px;">Новости</h1>
                 <a class="btn" href="./add_news.php">
                     Добавить новость
                 </a>
                 <a class="btn" href="./news_review.php">
                     Список новостей
+                </a>
+                <h1 style = "color: #0D244F; width: 100%; text-align: center; font-size: 25px; margin-bottom: 15px;">Призы</h1>
+                <a class="btn" href="./add_product.php">
+                    Добавить приз
+                </a>
+                <a class="btn" href="./product_review.php">
+                    Список призов
                 </a>
             
             </main>
@@ -37,7 +46,6 @@
 ?>
 
 <?php endif ?>
-
 
 <style>
     * {
@@ -78,6 +86,7 @@
     body {
         background-color: Lavender;
         background-color: #F3FAF9;
+        font-family: "Evolventa-Regular";
     }
 
     .btn {
