@@ -1,0 +1,181 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    color-scheme: only light;
+    --index: calc(1vw + 1vh);
+}
+
+@font-face {
+    font-family: 'Rubik';
+    src: url(/fonts/Rubik.woff2);
+}
+
+@font-face {
+    font-family: 'Inter-Bold';
+    src: url(/fonts/Inter-Bold.woff2);
+}
+
+@font-face {
+    font-family: 'segoeprint';
+    src: url(/fonts/segoeprint.woff);
+}
+
+button {
+    border: none;
+}
+
+img {
+    object-fit: cover;
+}
+
+#shop {
+    background: linear-gradient(150deg, #e6d3f9 0%, #e6d3f9 50%, #cea0f1 50%, #cea0f1 100%);
+    padding: calc(var(--index) * 4) calc(var(--index) * 3) calc(var(--index) * 3) calc(var(--index) * 3);
+}
+
+.shop_header {
+    font-family: 'Rubik';
+    width: 100%;
+    text-align: center;
+    color: #6600FF;
+    font-weight: 300;
+    font-size: calc(var(--index) * 1.1);
+    margin-top: calc(var(--index) * 1);
+    margin-bottom: calc(var(--index) * 1);
+}
+
+.last_header {
+    color: black;
+    font-weight: 200;
+    margin-top: calc(var(--index) * 1.3);
+    font-size: calc(var(--index) * 0.9);
+}
+
+.section_header {
+    font-family: 'Rubik';
+    width: 100%;
+    text-align: center;
+    color: #744af1;
+    font-weight: 550;
+    font-size: calc(var(--index) * 2.5);
+    margin-bottom: 0;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.product_box {
+    transition:transform 0.3s ease-out;
+    background-color: rgba(255,255,255,0.8);
+    width: calc(var(--index) * 13);
+    height: calc(var(--index) * 18);
+    padding: calc(var(--index) * 1.3) calc(var(--index) * 2.5);
+    border-radius: calc(var(--index) * 1.2);
+    margin: calc(var(--index) * 0.6) calc(var(--index) * 0.4);
+}
+
+.product_box:hover {
+    cursor: pointer;
+    transform:scale(1.05);
+    z-index:10;
+}
+
+.product_img {
+    width: calc(var(--index) * 10);
+    height: calc(var(--index) * 10);
+    border-radius: calc(var(--index) * 1);
+}
+
+.product_name_box {
+    height: calc(var(--index) * 1.4);
+}
+
+.product_name {
+    font-family: 'segoeprint';
+    text-align: center;
+    width: 100%;
+    margin: calc(var(--index) * 0.4) 0 0 0;
+    font-weight: 550;
+    align-items: center;
+    line-height: calc(var(--index) * 0.7);
+    font-size: calc(var(--index) * 0.7);
+}
+
+.price_box {
+    width: auto;
+}
+
+.product_number {
+    font-family: 'Rubik';
+    font-family: 'segoeprint';
+    width: 100%;
+    text-align: center;
+    font-weight: 300;
+    margin: calc(var(--index) * 0.2) 0 0 0;
+    font-size: calc(var(--index) * 0.6);
+}
+
+.product_price {
+    margin:  0;
+    font-size: calc(var(--index) * 1.3);
+    font-family: 'Inter-Bold';
+}
+
+.token {
+    width: calc(var(--index) * 2);
+    height: calc(var(--index) * 2);
+    margin-left: calc(var(--index) * 0.3);
+}
+
+@media only screen and (max-width: 640px) {
+    #shop {
+        padding: calc(var(--index) * 5) calc(var(--index) * 0.6) calc(var(--index) * 3) calc(var(--index) * 0.6);
+    }
+
+    .section_header {
+        font-size: calc(var(--index) * 3);
+        margin-bottom: calc(var(--index) * 1.3);
+    }
+
+    .shop_header {
+        font-size: calc(var(--index) * 1.2);
+        margin-top: calc(var(--index) * 0.5);
+        margin-bottom: calc(var(--index) * 1);
+        padding: 0 calc(var(--index) * 0.3);
+    }
+
+    .product_box {
+        width: calc(var(--index) * 15);
+        height: calc(var(--index) * 21);
+        padding: calc(var(--index) * 1.3) calc(var(--index) * 2.5);
+        margin: calc(var(--index) * 0.5) calc(var(--index) * 0.4);
+    }
+
+    .product_img {
+        width: calc(var(--index) * 12);
+        height: calc(var(--index) * 12);
+    }
+
+    .product_name_box {
+        height: calc(var(--index) * 2.5);
+    }
+
+    .product_name {
+        margin: calc(var(--index) * 0.6) 0 0 0;
+        line-height: calc(var(--index) * 1);
+        font-weight: 570;
+        font-size: calc(var(--index) * 1);
+    }
+
+    .product_number {
+        margin: calc(var(--index) * 0.2) 0 0 0;
+        font-size: calc(var(--index) * 0.8);
+    }
+}
