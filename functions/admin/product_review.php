@@ -31,16 +31,22 @@
     $stmt = $pdo->query('SELECT * FROM `shop` ORDER BY `shop`.`price` ASC');
     $res = $stmt->fetchAll();
 
-    echo "<div style='display: flex; justify-content: center;'> <div style=' text-align: left; background-color: white; width: auto; margin-top: 40px; border-radius: 30px; '><table id = 'database'><tr><th>Артикул</th><th> Название товара </th><th> Цена </th> <th> Изображение </th><th></th></tr>";
+    echo "<div style='display: flex; justify-content: center;'> <div style=' text-align: left; background-color: white; width: auto; margin-top: 40px; border-radius: 30px; '><table id = 'database'><tr><th>Артикул</th><th> Название товара </th><th> Цена </th> <th> Изображение </th><th> Наличие </th><th></th><th></th></tr>";
     foreach($res as $row){
         echo "<tr>";
         echo "<td class = 'name'> 00" . $row["id"] . "</td>";
         echo "<td class = 'name'>" . $row["name"] . "</td>";
         echo "<td class = 'name'>" . $row["price"] . "</td>";
         echo "<td class = 'name'><a href='./images/shop/" . $row["image"] ."'>" . $row["image"] . "</a></td>";
+        if ($row["view"] == 1) {
+            echo "<td class = 'name'> Есть </td>";
+        } else {
+            echo "<td class = 'name'> Нет </td>";
+        }
+        echo "<td><a class = 'update' href='update_product.php?id=" . $row["id"] . "'><button class = 'btn'>Редактировать</button></a></td>";
         echo "<td><form action='./product_review.php' method='post'>
                             <input type='hidden' name='id' value='" . $row["id"] . "' />
-                            <input type='submit' class='btn' value='Удалить'>
+                            <input type='submit' class='btn delete' value='Удалить'>
                         </form></td>";
         echo "</tr>";
     }
@@ -98,6 +104,12 @@
         font-family: "Evolventa-Regular";
     }
 
+        .update {
+        font-size: 12px;
+        color:  black;
+        text-decoration: none;
+    }
+
     .btn {
         margin-left: 20px;
         width: 150px;
@@ -116,6 +128,10 @@
         color: black;
     }
 
+    .delete {
+        background-color: Salmon;
+    }
+
     td {
         vertical-align: top;
         padding-top: 30px;
@@ -124,6 +140,11 @@
 
     .btn:hover {
         box-shadow: 0 15px 20px rgba(59, 0, 105, .4);
+        cursor: pointer;
+    }
+
+    .delete:hover {
+        box-shadow: 0 15px 20px rgba(159, 0, 10, .4);
         cursor: pointer;
     }
 
