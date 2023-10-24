@@ -22,7 +22,7 @@
                     <h3 class = "menu">' . $_SESSION['login'] .", вход выполнен " .  '<a style = "width: 100%; text-align: right; text-decoration: none; " href = "/functions/admin/logout.php">Выйти</a></h3>
                 </div>
             </header>
-            <main style = "display: flex; flex-direction: column;  height: 100vh; align-items: center; margin-top: 200px;">
+            <main style = "display: flex; flex-direction: column;  height: 100vh; align-items: center; margin-top: 50px;">
                 <h1 style = "color: #0D244F; width: 100%; text-align: center; font-size: 25px; margin-bottom: 15px;">Новости</h1>
                 <a class="btn" href="./add_news.php">
                     Добавить новость
@@ -36,6 +36,13 @@
                 </a>
                 <a class="btn" href="./product_review.php">
                     Список призов
+                </a>
+                <h1 style = "color: #0D244F; width: 100%; text-align: center; font-size: 25px; margin-bottom: 15px;">Адреса</h1>
+                <a class="btn" href="./add_address.php">
+                    Добавить адрес
+                </a>
+                <a class="btn" href="./address_review.php">
+                    Список адресов
                 </a>
             
             </main>
