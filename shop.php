@@ -54,6 +54,7 @@
             <li><a href="#contact">Контакты</a></li>
             <li><a class="sign_up" id = "record">Записаться на урок</a></li>
             <li><a href="tel:+7 984 195-30-14" id = "tel">+7 (984) 195-30-14</a></li>
+            <li><a href="tel:2002 - 500" id = "tel">2002 - 500</a></li>
             <div id = "soc_icon_block">
                 <a href="https://vk.com/progame_vl"><div class = "soc_icon" id = "vk_i"></div></a>
                 <a href="https://t.me/+tNk7Txy8qOBjNDQ6"><div class = "soc_icon" id = "telegram_i"></div></a>
@@ -115,14 +116,14 @@
         <div id = "addresses_block">
             <h1 id = "addresses_header">Адреса</h1>
             <ul>
-                <li class="contact_text">Океанский проспект, 83</li>
-                <li class="contact_text">Калинина 11a/2</li>
-                <li class="contact_text">Проспект 100-летия Владивостоку, 103</li>
-                <li class="contact_text">Проспект 100-летия Владивостоку, 155</li>
-                <li class="contact_text">Невельского, 31</li>
-                <li class="contact_text">Каплунова, 6</li>
-                <li class="contact_text">Адмирала Горшкова, 36</li>
-                <li class="contact_text">Казанская, 4</li>
+                <?php
+                    $stmt = $pdo->query('SELECT * FROM `addresses` ORDER BY `addresses`.`id` ASC');
+                    $res = $stmt->fetchAll();
+
+                    foreach($res as $row) {
+                    echo '<li class="contact_text">' . $row["address"] . '</li>';
+                    }
+                ?>
             </ul>
         </div>
         <div class = "flex" id = "social">
@@ -146,6 +147,7 @@
             <h1 id = "contact_header">Как с нами связаться</h1>
             <a class = "contact_a contact_text" href="mailto:office@progamevl.ru">office@progamevl.ru</a>
             <a class = "contact_a contact_text" href = "tel:+7 984 195-30-14">+7 984 195-30-14</a>
+            <a class = "contact_a contact_text" href = "tel:2002 - 500">2002 - 500</a>
         </div>
     </div>
     <div id = "white_line"></div>
@@ -188,46 +190,30 @@
             <input required id = "age" type="number" name = "Age" class = "input_sign_up" placeholder="Возраст ребёнка (полных лет)"><br>
             <h1 id = "date_label">Где вам удобнее заниматься? (Можно выбрать несколько)</h1>
             <table>
-                <tr>
-                    <td>
-                        <input class="address_checkbox" type="checkbox" name="address[]" value="Океанский проспект, 83">
-                        <label class="address_label">📍 Океанский проспект, 83</label>
-                    </td>
-                    <td>
-                        <input class="address_checkbox" type="checkbox" name="address[]" value = "Калинина, 11a/2">
-                        <label class="address_label">📍 Калинина, 11a/2</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input class="address_checkbox" type="checkbox" name="address[]" value = "Проспект 100-летия Владивостоку, 103">
-                        <label class="address_label">📍 Пр-т 100-летия Владивостоку, 103</label>
-                    </td>
-                    <td>
-                        <input class="address_checkbox" type="checkbox" name="address[]" value="Проспект 100-летия Владивостоку, 155">
-                        <label class="address_label">📍 Пр-т 100-летия Владивостоку, 155</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input class="address_checkbox" type="checkbox" name="address[]" value = "Невельского, 31">
-                        <label class="address_label">📍 Невельского, 31</label>
-                    </td>
-                    <td>
-                        <input class="address_checkbox" type="checkbox" name="address[]" value="Каплунова, 6">
-                        <label class="address_label">📍 Каплунова, 6</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input class="address_checkbox" type="checkbox" name="address[]" value="Адмирала Горшкова, 36">
-                        <label class="address_label">📍 Адмирала Горшкова, 36</label>
-                    </td>
-                    <td>
-                        <input class="address_checkbox" type="checkbox" name="address[]" value="Казанская, 4">
-                        <label class="address_label">📍 Казанская, 4</label>
-                    </td>
-                </tr>
+                <?php 
+                    $index_address = 0;
+                    foreach($res as $row) {
+                        if ($index_address % 2 == 0) {
+                            echo '<tr>';
+
+                        } 
+
+                        echo '<td>
+                        <input class="address_checkbox" type="checkbox" name="address[]" value="' . $row["address"] . '">
+                        <label class="address_label">📍 ' . $row["address"] . '</label>
+                    </td>';
+
+                        if ($index_address % 2 != 0) {
+                            echo '</tr>';
+
+                        } 
+                        $index_address++;  
+                    }
+
+                    if ($index_address % 2 != 0) {
+                        echo '<td></td></tr>';
+                    }
+                ?> 
                 <tr>
                     <td>
                         <input class="address_checkbox" type="checkbox" name="address[]" value="Онлайн">

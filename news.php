@@ -1,6 +1,6 @@
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0, maximum-scale=1">
     <meta name = "description" content="Школа программирования для детей и подростков во Владивостоке. Обучим работе с Python, C++, С#, HTML, CSS, JavaScript, Scratch, Roblox, Minecraft и многое другое. Персональная программа. Записывайтесь сейчас! Создавайте свои проекты. Отслеживайте прогресс. Актуальные навыки. Опытные преподаватели. Персональная программа. Выбирайте удобный формат - онлайн или оффлайн, идивидуальые занятия или в небольшой группе.">
     <meta name="keywords" content="Владивосток, Программирование, онлайн, оффлайн, групповые занятия, индивидуальные занятия, Приморский край, cкетчинг, цифровой рисунок, IT, анимация, 3D-моделирование, Python, Roblox, Minecraft, создание игр, создание сайтов, создание приложений">
@@ -53,6 +53,7 @@
             <li><a href="#contact">Контакты</a></li>
             <li><a class="sign_up" id = "record">Записаться на урок</a></li>
             <li><a href="tel:+7 984 195-30-14" id = "tel">+7 (984) 195-30-14</a></li>
+            <li><a href="tel:2002 - 500" id = "tel">2002 - 500</a></li>
             <div id = "soc_icon_block">
                 <a href="https://vk.com/progame_vl"><div class = "soc_icon" id = "vk_i"></div></a>
                 <a href="https://t.me/+tNk7Txy8qOBjNDQ6"><div class = "soc_icon" id = "telegram_i"></div></a>
@@ -66,8 +67,8 @@
 <main>
     <section class = "flex" id = "news">
         <?php
-        $user = "root";
-        $pass = "";
+        $user = "n43849_new_user";
+        $pass = "77885599VL^^";
         $db = "n43849_new";
 
         try {
@@ -107,13 +108,14 @@
         <div id = "addresses_block">
             <h1 id = "addresses_header">Адреса</h1>
             <ul>
-                <li class="contact_text">Океанский проспект, 83</li>
-                <li class="contact_text">Калинина 11a/2</li>
-                <li class="contact_text">Проспект 100-летия Владивостоку, 155</li>
-                <li class="contact_text">Невельского, 31</li>
-                <li class="contact_text">Каплунова, 6</li>
-                <li class="contact_text">Адмирала Горшкова, 36</li>
-                <li class="contact_text">Казанская, 4</li>
+            <?php
+                $stmt = $pdo->query('SELECT * FROM `addresses` ORDER BY `addresses`.`id` ASC');
+                $res = $stmt->fetchAll();
+
+                foreach($res as $row) {
+                echo '<li class="contact_text">' . $row["address"] . '</li>';
+                }
+                ?>
             </ul>
         </div>
         <div class = "flex" id = "social">
@@ -135,8 +137,9 @@
         </div>
         <div id = "contact_phone">
             <h1 id = "contact_header">Как с нами связаться</h1>
-            <a class = "contact_a contact_text">office@progamevl.ru</a>
+            <a class = "contact_a contact_text" href="mailto:office@progamevl.ru">office@progamevl.ru</a>
             <a class = "contact_a contact_text" href = "tel:+7 984 195-30-14">+7 984 195-30-14</a>
+            <a class = "contact_a contact_text" href = "tel:2002 - 500">2002 - 500</a>
         </div>
     </div>
     <div id = "white_line"></div>
@@ -176,8 +179,42 @@
             <input required id = "parent_name" type="text" name = "Parent_name" class = "input_sign_up" placeholder="Ваше имя"><br>
             <input required id = "child_name" type="text" name = "Child_name" class = "input_sign_up" placeholder="Имя ребёнка"><br>
             <input required id = "phone_mask" name ="Phone" type="tel" class = "input_sign_up" placeholder="Номер телефона"><br>
-            <h1 id = "date_label">Дата рождения ребёнка</h1>
-            <input required id = "date_sign_up" type="date" name ="Date" class = "input_sign_up" placeholder="Дата рождения ребёнка"><br>
+            <input required id = "age" type="number" name = "Age" class = "input_sign_up" placeholder="Возраст ребёнка (полных лет)"><br>
+            <h1 id = "date_label">Где вам удобнее заниматься? (Можно выбрать несколько)</h1>
+            <table>
+                <?php 
+                $index_address = 0;
+                foreach($res as $row) {
+                    if ($index_address % 2 == 0) {
+                        echo '<tr>';
+
+                    } 
+
+                    echo '<td>
+                    <input class="address_checkbox" type="checkbox" name="address[]" value="' . $row["address"] . '">
+                    <label class="address_label">📍 ' . $row["address"] . '</label>
+                </td>';
+
+                    if ($index_address % 2 != 0) {
+                        echo '</tr>';
+
+                    } 
+                    $index_address++;  
+                }
+
+                if ($index_address % 2 != 0) {
+                    echo '<td></td></tr>';
+                }
+                ?>
+
+                <tr>
+                    <td>
+                        <input class="address_checkbox" type="checkbox" name="address[]" value="Онлайн">
+                        <label class="address_label">🌎 Онлайн</label>
+                    </td>
+                </tr>
+            </table>
+            <br>
             <button id = "sign_up_btn" name = "sign_up_btn" type="submit">Отправить</button>
         </form>
         <p id = "sign_up_text">Нажимая на кнопку вы соглашаетесь с нашей <a id = "sign_up_a" href = "/docs/confidential.pdf">политикой конфиденциальности</a></p>
@@ -204,6 +241,23 @@
         <img src = "/images/whatsapp.png" width="100%" height="100%">
     </div>
 </a>
+        <!-- Yandex.Metrika counter -->
+
+        <script type="text/javascript" > 
+           (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+           m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+           (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+           ym(86582635, "init", {
+                clickmap:true,
+                trackLinks:true,
+                accurateTrackBounce:true,
+                webvisor:true
+           });
+        </script>
+        <noscript><div><img src="https://mc.yandex.ru/watch/86582635" style="position:absolute; left:-9999px;" alt="" /></div>
+        </noscript>
+        <!-- /Yandex.Metrika counter --> 
 
 <script src = "/js/preloader.js"></script>
 </body>
