@@ -45,19 +45,40 @@
 
 <?php
 
+function getRandomFileName($path)
+{
+  $path = $path ? $path . '/' : '';
+  do {
+      $name = md5(microtime() . rand(0, 999));
+      $file = $path . $name;
+  } while (file_exists($file));
+
+  return $name;
+}
+
 if (isset($_POST['upload_btn'])) {
     if (isset($_FILES['example']) & $_FILES['example']['error'] === UPLOAD_ERR_OK) {
-        $uploaddir = './images/shop/';
-        $uploadfile = $uploaddir . basename($_FILES['example']['name']);
-
+        $uploaddir = '/images/shop/';
+        //$uploadfile = $uploaddir . basename($_FILES['example']['name']);
+        $fileTmpName = $_FILES['example']['tmp_name'];
+        // Результат функции запишем в переменную
+        $image = getimagesize($fileTmpName);
+        // Сгенерируем новое имя файла через функцию getRandomFileName()
+        $name_img = getRandomFileName($fileTmpName);
+         // Сгенерируем расширение файла на основе типа картинки
+        $extension = image_type_to_extension($image[2]);
+        // Сократим .jpeg до .jpg
+        $format = str_replace('jpeg', 'jpg', $extension);
+        
         echo '<pre>';
-        if (!move_uploaded_file($_FILES['example']['tmp_name'], $uploadfile)) {
+        if (!move_uploaded_file($_FILES['example']['tmp_name'], __DIR__ . $uploaddir . $name_img . $format)) {
             echo '<script>alert("Ошибка загрузки!")</script>';
         } else {
             $name = $_POST['name'];
             $name = ucfirst($name);
             $price = $_POST['price'];
-            $img = basename($_FILES['example']['name']);
+            // $img = basename($_FILES['example']['name']);
+            $img = $name_img . $format;
             $sql = $pdo->prepare("INSERT INTO shop(`name`, `price`, `image`) VALUES (?, ?, ?);");
             $dbg = $sql->execute([$name, $price, $img]);
             echo "<script>window.location.href='/functions/admin/account.php';</script>";
@@ -67,6 +88,7 @@ if (isset($_POST['upload_btn'])) {
         echo '<script>alert("Файл не выбран!")</script>';
     }
 }
+
 
 ?>
 
