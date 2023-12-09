@@ -134,6 +134,83 @@ img {
     margin-left: calc(var(--index) * 0.3);
 }
 
+#question_block {
+    width: calc(var(--index) * 40);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+}
+
+.spoiler_wrap {
+    position: relative;
+    margin-bottom: 20px;
+    background: white;
+    width: calc(var(--index) * 36);
+    border-radius: calc(var(--index) * 0.7);
+}
+
+.spoiler_title {
+    cursor: pointer;
+    font-family: Rubik;
+    font-weight: 400;
+    font-size: calc(var(--index) * 0.9);
+    margin: 0;
+}
+
+.spoiler_title, .spoiler_content {
+    padding: calc(var(--index) * 1) calc(var(--index) * 2);
+}
+
+.spoiler_content {
+    padding-top: 0;
+    padding-bottom: 10px;
+    transition: 0.15s ease-out;
+    height: auto;
+    max-height: 0px;
+    overflow: hidden;
+    margin-top: -10px;
+    opacity: 0;
+    font-weight: 300;
+    font-size: calc(var(--index) * 0.85);
+    color: #444;
+}
+
+.spoiler_content p, .spoiler_content ul {
+    font-size: 16px;
+    margin: 20px 0;
+    color: #333;
+    line-height: 1.4;
+}
+
+.spoiler_content.open {
+    margin-top: 0;
+    max-height: 100%;
+    opacity: 1;
+}
+
+.spoiler_title .spoiler_arrow {
+    display: inline-block;
+    margin-left: calc(var(--index) * 0.6);
+    font-size: calc(var(--index) * 0.6);
+    transition: all .1s;
+    vertical-align: middle;
+}
+
+.spoiler_arrow {
+    position: absolute;
+    top: calc(var(--index) * 1.5);
+    right: calc(var(--index) * 1.5);
+}
+
+.spoiler_title .spoiler_arrow svg {
+    fill: #5C4AF1;
+    width: calc(var(--index) * 0.6);
+}
+.spoiler_title .spoiler_arrow.open {
+    transform: rotate(180deg);
+}
+
 @media only screen and (max-width: 640px) {
     #shop {
         padding: calc(var(--index) * 5) calc(var(--index) * 0.6) calc(var(--index) * 3) calc(var(--index) * 0.6);
@@ -152,7 +229,7 @@ img {
     }
 
     .product_box {
-        width: calc(var(--index) * 15);
+        width: 180px;
         height: calc(var(--index) * 21);
         padding: calc(var(--index) * 1.3) calc(var(--index) * 2.5);
         margin: calc(var(--index) * 0.5) calc(var(--index) * 0.4);
@@ -177,5 +254,41 @@ img {
     .product_number {
         margin: calc(var(--index) * 0.2) 0 0 0;
         font-size: calc(var(--index) * 0.8);
+    }
+
+        #questions {
+        padding: calc(var(--index) * 2.5) calc(var(--index) * 1.5);
+    }
+
+    #questions_header {
+        margin-top: 20px;
+        font-size: calc(var(--index) * 2.3);
+    }
+
+    #question_block {
+        width: 100%;
+    }
+
+    .spoiler_wrap {
+        margin-bottom: calc(var(--index) * 0.8);
+        width: 100%;
+        border-radius: calc(var(--index) * 0.5);
+    }
+
+    .spoiler_title {
+        font-size: calc(var(--index) * 1.2);
+        width: calc(var(--index) * 28);
+        height: calc(var(--index) * 5.5);
+    }
+
+    .spoiler_title .spoiler_arrow svg {
+        width: calc(var(--index) * 1.3);
+    }
+
+    .spoiler_arrow {
+        width: calc(var(--index) * 1.5);
+        height: calc(var(--index) * 1);
+        top: calc(var(--index) * 2);
+        right: calc(var(--index) * 2);
     }
 }
