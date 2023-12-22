@@ -44,7 +44,11 @@
                         <h1>Редактирование</h1>
                         <input type="hidden" name="id" value="' . $product_id .'"/>
                         <input type="hidden" name="img" value="' . $product_image .'"/>
-                        <input name="name" type="text" required placeholder="Введите название" value = "' . $product_name . '">
+                        <input name="name" type="text" required placeholder="Введите название" value = ';
+                        echo "'";
+                        echo  $product_name;
+                        echo "'";
+                        echo '>
                         <input name="price" type="number" required placeholder="Введите цену" value = "' . $product_price . '">
                         <h3>Изображение: <a href="./images/shop/' . $product_image  .' "> ' . $product_image  . '</a></h3>';
 
@@ -80,6 +84,17 @@
 
 <?php
 
+function getRandomFileName($path)
+{
+  $path = $path ? $path . '/' : '';
+  do {
+      $name = md5(microtime() . rand(0, 999));
+      $file = $path . $name;
+  } while (file_exists($file));
+
+  return $name;
+}
+
 if (isset($_POST['upload_btn'])) {
     $product_id = $_POST['id'];
     $name = $_POST['name'];
@@ -94,14 +109,27 @@ if (isset($_POST['upload_btn'])) {
     }
 
     if (isset($_FILES['example']) & $_FILES['example']['error'] === UPLOAD_ERR_OK) {
-        $uploaddir = './images/shop/';
-        $uploadfile = $uploaddir . basename($_FILES['example']['name']);
+        // $uploaddir = './images/shop/';
+        // $uploadfile = $uploaddir . basename($_FILES['example']['name']);
+        $uploaddir = '/images/shop/';
+        //$uploadfile = $uploaddir . basename($_FILES['example']['name']);
+        $fileTmpName = $_FILES['example']['tmp_name'];
+        // Результат функции запишем в переменную
+        $image = getimagesize($fileTmpName);
+        // Сгенерируем новое имя файла через функцию getRandomFileName()
+        $name_img = getRandomFileName($fileTmpName);
+         // Сгенерируем расширение файла на основе типа картинки
+        $extension = image_type_to_extension($image[2]);
+        // Сократим .jpeg до .jpg
+        $format = str_replace('jpeg', 'jpg', $extension);
 
         echo '<pre>';
-        if (!move_uploaded_file($_FILES['example']['tmp_name'], $uploadfile)) {
+        if (!move_uploaded_file($_FILES['example']['tmp_name'], __DIR__ . $uploaddir . $name_img . $format)) {
             echo '<script>alert("Ошибка загрузки!")</script>';
+            echo '<script>alert(' . $name_img . $format .')</script>';
         } else {
-            $img = basename($_FILES['example']['name']);
+            // $img = basename($_FILES['example']['name']);
+            $img = $name_img . $format;
         }
     }
 
