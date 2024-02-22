@@ -38,9 +38,10 @@
         echo "<td class = 'name'>" . $row["date"] . "</td>";
         echo "<td class = 'description'>" . $row["text"] . "</td>";
         echo "<td class = 'name'><a href='./images/" . $row["image"] ."'>" . $row["image"] . "</a></td>";
+        echo "<td><a class = 'update' href='update_news.php?id=" . $row["id"] . "'><button class = 'btn'>Редактировать</button></a></td>";
         echo "<td><form action='./news_review.php' method='post'>
                             <input type='hidden' name='id' value='" . $row["id"] . "' />
-                            <input type='submit' class='btn' value='Удалить'>
+                            <input type='submit' class='btn delete' value='Удалить'>
                         </form></td>";
         echo "</tr>";
     }
@@ -116,15 +117,24 @@
         color: black;
     }
 
-    td {
-        vertical-align: top;
-        padding-top: 30px;
-    }
-
-
     .btn:hover {
         box-shadow: 0 15px 20px rgba(59, 0, 105, .4);
         cursor: pointer;
+    }
+
+    .delete {
+        background-color: Salmon;
+    }
+
+
+    .delete:hover {
+        box-shadow: 0 15px 20px rgba(159, 0, 10, .4);
+        cursor: pointer;
+    }
+
+    td {
+        vertical-align: top;
+        padding-top: 30px;
     }
 
     #database {
