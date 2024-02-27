@@ -1,0 +1,186 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    color-scheme: only light;
+    --index: calc(1vw + 1vh);
+}
+
+@font-face {
+    font-family: 'Rubik';
+    src: url(/fonts/Rubik.woff2);
+}
+
+@font-face {
+    font-family: 'Borsok';
+    src: url(/fonts/boorsok.otf);
+}
+
+@font-face {
+    font-family: 'Halogen';
+    src: url(/fonts/Halogen_0.ttf);
+}
+
+button {
+    border: none;
+}
+
+img {
+    object-fit: cover;
+}
+
+#summer_block {
+    height: 100vh;
+    background-image: url(../images/summer/menu/fon.png);
+    background-size: cover;
+    background-position: center;
+    padding: calc(var(--index) * 4) calc(var(--index) * 3) calc(var(--index) * 3) calc(var(--index) * 3);
+    
+}
+
+.section_header {
+    font-family: 'Borsok';
+    width: 100%;
+    text-align: center;
+    color: #84D634;
+    font-weight: 550;
+    font-size: calc(var(--index) * 2.5);
+    margin-bottom: calc(var(--index) * 1);
+    -webkit-text-stroke: 2.3px  #4E7924;
+    line-height: 1.2;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.circle_block {
+    width: calc(var(--index) * 18);
+}
+
+
+.circle {
+    position: relative;
+    border-radius: 50%;
+    background-color: white;
+    width: calc(var(--index) * 12);
+    height: calc(var(--index) * 12);
+    margin: calc(var(--index) * 2) calc(var(--index) * 2) calc(var(--index) * 0.5) calc(var(--index) * 2);
+    transition: 0.5s;
+    -webkit-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.29); 
+    -moz-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.29); 
+    box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.29);
+}
+
+.circle:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+#holidays {
+    background: radial-gradient(circle, #FFFFFF 0%, #FFD74A 50%, #FF8A00 95%);
+    border: calc(var(--index) * 0.2) solid #FF8C01;
+}
+
+#intensive {
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(205,255,101,1) 77%, rgba(165,245,0,1) 90%);
+    border: calc(var(--index) * 0.2) solid #5E8736;
+}
+
+#mk {
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(104,255,246,1) 87%);
+    border: calc(var(--index) * 0.2) solid #008597;
+}
+
+
+.circle_text {
+    font-family:'Borsok';
+    -webkit-text-stroke-width: 1px;
+    font-size: calc(var(--index) * 1);
+}
+
+.description_text {
+    font-family: Halogen;
+    font-size: calc(var(--index) * 0.8);
+    color: #534D4D;
+    text-align: center;
+    width: calc(var(--index) * 12);
+}
+
+
+#s_boy, #s_girl, #s_comp, #s_comp_2, #s_tablet {
+    position: absolute;
+}
+
+#s_boy {
+    top: calc(var(--index) * -1);
+    right: calc(var(--index) * 0);
+    width: calc(var(--index) * 5);
+    height: auto;
+}
+
+#s_girl {
+    bottom: calc(var(--index) * 1.2);
+    width: calc(var(--index) * 5.5);
+    height: auto;
+}
+
+#s_comp {
+    top: calc(var(--index) * -2);
+    left: calc(var(--index) * 0.5);
+    width: calc(var(--index) * 9);
+    heigh: auto;
+}
+
+#s_comp_2 {
+    top: calc(var(--index) * 1.2);
+    width: calc(var(--index) * 5);
+    heigh: auto;
+}
+
+#s_tablet {
+    bottom: calc(var(--index) * 3);
+    right: calc(var(--index) * 2);
+    width: calc(var(--index) * 5.5);
+    heigh: auto;
+}
+
+@media only screen and (max-width: 640px) {
+
+    #s_comp {
+        top: calc(var(--index) * -1);
+    }
+
+    #summer_block {
+        background-image: url(../images/summer/menu/fon2.png);
+    }
+
+    .description_text {
+        width: calc(var(--index) * 18);
+        font-size: calc(var(--index) * 1.1);
+    }
+
+    .circle {
+        margin: calc(var(--index) * 0.2) 0 0 0;
+    }
+
+    .circle_text {
+        -webkit-text-stroke-width: 0.6px;
+        font-size: calc(var(--index) * 1);
+    }
+
+    .section_header {
+        line-height: 1.1;
+        font-size: calc(var(--index) * 2);
+        -webkit-text-stroke: 1.8px  #4E7924;
+        margin-top: calc(var(--index) * 4);
+        margin-bottom: calc(var(--index) * 1.3);
+    }
+
+    
+}
