@@ -21,35 +21,37 @@
                     <h3 class = "menu">' . $_SESSION['login'] .", вход выполнен " .  '<a style = "width: 100%; text-align: right; text-decoration: none; " href = "/functions/admin/logout.php">Выйти</a></h3>
                 </div>
             </header>
-            <section id = "section" style = "display: flex; flex-direction: column;  height: 500px; margin-top: 50px;">
+            <section id = "section" style = "display: flex; flex-direction: column;  min-height: 500px; margin-top: 50px; margin-bottom: 50px;">
                 <form method="POST" enctype="multipart/form-data">
                     <div style="display: flex; align-items: center; flex-direction: column;">
-                        <h1>Добавление мастер-класса</h1>
-                        <input name="name" type="text" required placeholder="Введите название мастер-класса">
-                        <input name="date" type="text" placeholder="Введите даты через запятую">
-                        <textarea name="description" required type="text" placeholder="Введите описание мастер-класса (1-2 предложения)"></textarea>
-                        <select name="age" class = "select_group">
-                         <option value="6-7 лет">6-7 лет</option>
-                         <option value="8-10 лет">8-10 лет</option>
-                         <option value="11-13 лет">11-13 лет</option>
-                         <option value="12-16 лет">12-16 лет</option>
-                        </select>
-                        <select name="marker" class = "select_group">
-                         <option value="red">Красный</option>
-                         <option value="yellow">Жёлтый</option>
-                         <option value="orange">Оранжевый</option>
-                         <option value="green">Зелёный</option>
-                         <option value="blue">Голубой</option>
-                         <option value="purple">Фиолетовый</option>
-                         <option value="pink">Розовый</option>
-                        </select>
+                        <h1>Добавление интенсива</h1>';
+
+
+                        echo'<textarea id = "i_name" name="name" required type="text" placeholder="Введите название интенсива"></textarea>
+                        <input name="age" type="text" required placeholder="Введите возрастную категорию">
+                        <input name="date" type="text" required placeholder="Введите даты через запятую">
+                        <input name="day1" type="text" required placeholder="Введите тему 1-ого дня (не более 20 символов)">
+                        <input name="day2" type="text" required placeholder="Введите тему 2-ого дня (не более 20 символов)">
+                        <input name="day3" type="text" required placeholder="Введите тему 3-его дня (не более 20 символов)">
+                        <input name="day4" type="text" required placeholder="Введите тему 4-ого дня (не более 20 символов)">
+                        <input name="day5" type="text" required placeholder="Введите тему 5-ого дня (не более 20 символов)">
+                        <textarea name="description" required type="text" placeholder="Введите описание интенсива (1-2 предложения)"></textarea>
+
+                        <label>
+                            <input type="checkbox" checked name ="offline"> Очно
+                        </label>
+
+                        <label>
+                            <input type="checkbox" name ="online"> Онлайн
+                        </label>
+                        
                         <div style="display: flex; flex-wrap: wrap; width: 500px; flex-direction: column; align-items: center; margin-top: 10px;">
                             <input id = "input_example" type="file"  name="example">
-                            <button id="input_button_example" ' . 'onclick="document.getElementById('. " 'input_example').click() " . '  " type="button">Выберите изображение</button>
-                            <button id = "load" name = "upload_btn" type="submit">Сохранить</button>
+                            <button id="input_button_example" ' . 'onclick="document.getElementById('. " 'input_example').click() " . '  " type="button">Выберите фото</button>
+                            <button id = "load" name = "upload_btn" type="submit">Загрузить</button>
                         </div>
                     </div>
-                </formт
+                </form>
             </section>
         </body>';
     ?>
@@ -72,40 +74,52 @@ function getRandomFileName($path)
   return $name;
 }
 
-
 if (isset($_POST['upload_btn'])) {
     if (isset($_FILES['example']) & $_FILES['example']['error'] === UPLOAD_ERR_OK) {
-
-        $uploaddir = '/images/mk/';
-        //$uploadfile = $uploaddir . basename($_FILES['example']['name']);
+        $uploaddir = '/images/intensive/';
         $fileTmpName = $_FILES['example']['tmp_name'];
-        // Результат функции запишем в переменную
         $image = getimagesize($fileTmpName);
-        // Сгенерируем новое имя файла через функцию getRandomFileName()
         $name_img = getRandomFileName($fileTmpName);
-         // Сгенерируем расширение файла на основе типа картинки
         $extension = image_type_to_extension($image[2]);
-        // Сократим .jpeg до .jpg
         $format = str_replace('jpeg', 'jpg', $extension);
-
+        
         echo '<pre>';
         if (!move_uploaded_file($_FILES['example']['tmp_name'], __DIR__ . $uploaddir . $name_img . $format)) {
             echo '<script>alert("Ошибка загрузки!")</script>';
         } else {
             $name = $_POST['name'];
-            $date = $_POST['date'];
-
-            $description = $_POST['description'];
-            $description = str_replace("\n", '<br>', $description);
-            $description = str_replace("\r", '', $description);
-
+            $name = ucfirst($name);
+            $name = str_replace("\n", '<br>', $name);
+            $name = str_replace("\r", '', $name);
+            
             $age = $_POST['age'];
-            $marker = $_POST['marker'];
+            $date = $_POST['date'];
+            $text = $_POST['description'];
+            $text = str_replace("\n", '<br>', $text);
+            $text = str_replace("\r", '', $text);
+            $day_1 = $_POST['day1'];
+            $day_2 = $_POST['day2'];
+            $day_3 = $_POST['day3'];
+            $day_4 = $_POST['day4'];
+            $day_5 = $_POST['day5'];
+
+            if (!empty($_POST['offline'])) {
+                $offline = 1;
+            } else {
+                $offline = 0;
+            }
+
+            if (!empty($_POST['online'])) {
+                $online = 1;
+            } else {
+                $online = 0;
+            }
+
 
             $img = $name_img . $format;
 
-            $sql = $pdo->prepare("INSERT INTO mk(`name`, `description`, `date`, `marker`, `age`, `image`) VALUES (?, ?, ?, ?, ?, ?);");
-            $dbg = $sql->execute([$name, $description, $date, $marker, $age, $img]);
+            $sql = $pdo->prepare("INSERT INTO intensive(`name`, `age`, `date`, `description`, `day1`, `day2`, `day3`, `day4`, `day5`, `image`, `offline`, `online`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+            $dbg = $sql->execute([$name, $age, $date, $text, $day_1, $day_2, $day_3, $day_4, $day_5, $img, $offline, $online]);
             echo "<script>window.location.href='/functions/admin/account.php';</script>";
         }
 
@@ -175,6 +189,25 @@ if (isset($_POST['upload_btn'])) {
         margin-bottom: 10px;
     }
 
+    button {
+        width: 500px;
+        height: 45px;
+        background-color: MediumPurple;
+        border: none;
+        border-radius: 25px;
+        margin-bottom: 10px;
+        font-size: 18px;
+        font-family: "Evolventa-Regular";
+    }
+
+
+    #load {
+        background-color: #0D244F;
+        color: white;
+        height: 50px;
+        margin-top: 10px;
+    }
+
     textarea {
         width: 500px;
         height: 150px;
@@ -189,34 +222,10 @@ if (isset($_POST['upload_btn'])) {
         margin-bottom: 10px;
     }
 
-    button {
+    #i_name {
         width: 500px;
-        height: 45px;
-        background-color: MediumPurple;
-        border: none;
-        border-radius: 25px;
-        margin-bottom: 10px;
-        font-size: 18px;
-        font-family: "Evolventa-Regular";
-    }
-
-    .select_group {
-        width: 500px;
-        height: 30px;
-        font-size: 13px;
-        background: white;
-        border-radius: 25px;
-        border: none;
-        padding: 10px 20px;
-        margin-bottom: 10px;
-    }
-
-
-    #load {
-        background-color: #0D244F;
-        color: white;
-        height: 50px;
-        margin-top: 10px;
+        height: 35px;
+        border-radius: 15px;
     }
 
     button:hover {
@@ -226,6 +235,12 @@ if (isset($_POST['upload_btn'])) {
 
     h3 {
         font-size: 13px;
+    }
+
+    input[type='checkbox'] {
+        margin-top: 10px;
+        width: auto;
+        height: auto;
     }
 
     @media only screen and (max-width: 640px) {

@@ -16,30 +16,30 @@
     <?php
         // если запрос GET
         if($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
-        $mk_id = $_GET["id"];
-        $sql = "SELECT * FROM mk WHERE id = :mk_id";
+        $intensive_id = $_GET["id"];
+        $sql = "SELECT * FROM intensive WHERE id = :intensive_id";
         $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(":mk_id", $mk_id);
+        $stmt->bindValue(":intensive_id", $intensive_id);
         // выполняем выражение и получаем адрес по id
         $stmt->execute();
         if($stmt->rowCount() > 0){
         foreach ($stmt as $row) {
-            $mk_name = $row["name"];
-            $mk_date = $row["date"];
-            $mk_age = $row["age"];
-            $mk_marker = $row["marker"];
-            $mk_text = $row["description"];
-            $mk_text = str_replace(array("<br>"), PHP_EOL, $mk_text);
-            // $mk_text = preg_replace('/<br>/i', '', $mk_text);
-            $mk_image = $row["image"]; 
+            $i_name = $row["name"];
+            $i_name = str_replace(array("<br>"), PHP_EOL, $i_name);
+            $i_age = $row["age"];
+            $i_date = $row["date"];
+            $i_text = $row["description"];
+            $i_text = str_replace(array("<br>"), PHP_EOL, $i_text);
+            $i_day_1 = $row["day1"];
+            $i_day_2 = $row["day2"];
+            $i_day_3 = $row["day3"];
+            $i_day_4 = $row["day4"];
+            $i_day_5 = $row["day5"];
+            $i_image = $row["image"];
+
+            $i_offline = $row["offline"];
+            $i_online = $row["online"];
         }
-
-        /*
-        echo $news_text;
-        echo $news_header;
-        echo $news_name;
-        echo $news_image;*/
-
 
 
     echo '<body>
@@ -53,124 +53,91 @@
                 <form method="POST" enctype="multipart/form-data">
                     <div style="display: flex; align-items: center; flex-direction: column;">
                         <h1>Редактирование</h1>
-                        <input type="hidden" name="id" value="' . $mk_id .'"/>
-                        <input type="hidden" name="img" value="' . $mk_image .'"/>
-                        <input name="name" type="text" required placeholder="Введите название мастер-класса" value = ';
+                        <input type="hidden" name="id" value="' . $intensive_id .'"/>
+                        <input type="hidden" name="img" value="' . $i_image .'"/>';
+
+                        echo '<textarea id = "i_name" name="name" required type="text" placeholder="Введите название интенсива">' . $i_name .'</textarea>';
+
+                        echo '<input name="age" type="text" required placeholder="Введите возрастную категорию" value = ';
                         echo "'";
-                        echo  $mk_name;
+                        echo  $i_age;
                         echo "'";
-                        echo '>';
+                        echo '>
 
-                        echo '<input name="date" type="text" required placeholder="Введите даты через запятую" value = ';
+                        <input name="date" type="text" required placeholder="Введите даты через запятую" value = ';
                         echo "'";
-                        echo  $mk_date;
+                        echo  $i_date;
                         echo "'";
-                        echo '>';
+                        echo '>
 
+                        <input name="day1" type="text" required placeholder="Введите тему 1-ого дня" value = ';
+                        echo "'";
+                        echo  $i_day_1;
+                        echo "'";
+                        echo '>
 
-                        echo '<textarea name="description" required type="text" placeholder="Введите описание мастер-класса (1-2 предложения)">';
-                        echo  $mk_text;
-                        echo '</textarea>';
+                        <input name="day2" type="text" required placeholder="Введите тему 2-ого дня" value = ';
+                        echo "'";
+                        echo  $i_day_2;
+                        echo "'";
+                        echo '>
 
-                        echo '
-                        <select name="age" class = "select_group">
-                         <option ';
+                        <input name="day3" type="text" required placeholder="Введите тему 3-eго дня" value = ';
+                        echo "'";
+                        echo  $i_day_3;
+                        echo "'";
+                        echo '>
 
-                        if ($mk_age == "6-7 лет") {
-                            echo'selected="selected" ';
-                        }
-                         
-                        echo 'value="6-7 лет">6-7 лет</option>
-                        <option ';
+                        <input name="day4" type="text" required placeholder="Введите тему 4-ого дня" value = ';
+                        echo "'";
+                        echo  $i_day_4;
+                        echo "'";
+                        echo '>
 
-                        if ($mk_age == "8-10 лет") {
-                            echo'selected="selected" ';
-                        }
+                        <input name="day5" type="text" required placeholder="Введите тему 5-ого дня" value = ';
+                        echo "'";
+                        echo  $i_day_5;
+                        echo "'";
+                        echo '>
 
-                        echo 'value="8-10 лет">8-10 лет</option>
-                        <option ';
+                        <textarea name="description" required type="text" placeholder="Введите описание интенсива (1-2 предложения)">' . $i_text .'</textarea>';
 
-                        if ($mk_age == "11-13 лет") {
-                            echo'selected="selected" ';
-                        }
+                        
+                        echo '<h3>Изображение: <a href="./images/intensive/' . $i_image  .' "> ' . $i_image  . '</a></h3>';
 
-                        echo 'value="11-13 лет">11-13 лет</option>
-                         <option ';
-
-                        if ($mk_age == "12-16 лет") {
-                            echo'selected="selected" ';
-                        }
-
-                        echo 'value="12-16 лет">12-16 лет</option>
-                        </select>';
-
-                        echo '<select name="marker" class = "select_group">
-                         <option ';
-
-                        if ($mk_marker == "red") {
-                            echo'selected="selected" ';
-                        }
-
-                         echo 'value="red">Красный</option>
-                         <option ';
-
-                        if ($mk_marker == "yellow") {
-                            echo'selected="selected" ';
+                        if ($i_offline == 1) {
+                            echo '<label>
+                                    <input type="checkbox" checked name ="offline"> Очно
+                                </label>';
+                        } else {
+                                echo '<label>
+                                        <input type="checkbox" name ="offline"> Очно
+                                    </label>';
                         }
 
-                         echo 'value="yellow">Жёлтый</option>
-                         <option ';
-
-                        if ($mk_marker == "orange") {
-                            echo'selected="selected" ';
+                        if ($i_online == 1) {
+                            echo '<label>
+                                    <input type="checkbox" checked name ="online"> Онлайн
+                                </label>';
+                        } else {
+                                echo '<label>
+                                        <input type="checkbox" name ="online"> Онлайн
+                                </label>';
                         }
 
-                         echo 'value="orange">Оранжевый</option>
-                         <option ';
-
-                        if ($mk_marker == "green") {
-                            echo'selected="selected" ';
-                        }
-
-                         echo 'value="green">Зелёный</option>
-                         <option ';
-
-                        if ($mk_marker == "blue") {
-                            echo'selected="selected" ';
-                        }
-
-                         echo 'value="blue">Голубой</option>
-                         <option ';
-
-                        if ($mk_marker == "purple") {
-                            echo'selected="selected" ';
-                        }
-
-                         echo 'value="purple">Фиолетовый</option>
-                         <option ';
-
-                        if ($mk_marker == "pink") {
-                            echo'selected="selected" ';
-                        }
-
-                         echo 'value="pink">Розовый</option>
-                        </select>';
-
-                        echo '<h3>Изображение: <a href="./images/mk/' . $mk_image  .' "> ' . $mk_image  . '</a></h3>';
-              
-
-                        echo '<div style="display: flex; flex-wrap: wrap; width: 500px; flex-direction: column; align-items: center; margin-top: 10px;">
+            
+            echo '<div style="display: flex; flex-wrap: wrap; width: 500px; flex-direction: column; align-items: center; margin-top: 10px;">
                             <input id = "input_example" type="file"  name="example">
                             <button id="input_button_example" ' . 'onclick="document.getElementById('. " 'input_example').click() " . '  " type="button">Выберите новое фото</button>
                             <button id = "load" name = "upload_btn" type="submit">Сохранить</button>
-                            </div>
+                        </div>
                     </div>
                 </form>
             </section>
         </body>';
     }
     else{
-        echo "Мастер-класс не найден";
+        echo "Интенсив не найден";
     }
 } 
     ?>
@@ -194,23 +161,40 @@ function getRandomFileName($path)
 }
 
 if (isset($_POST['upload_btn'])) {
-    $mk_id = $_POST['id'];
-    $img = $_POST['img'];
+    $i_id = $_POST['id'];
     $name = $_POST['name'];
     $name = ucfirst($name);
+    $name = str_replace("\n",'<br>', $name);
+    $name = str_replace("\r",'', $name);
+    $age = $_POST['age'];
     $date = $_POST['date'];
 
-    $text = $_POST['description'];
-    $text = str_replace("\n", '<br>', $text);
-    $text = str_replace("\r", '', $text);
+    $day_1 = $_POST['day1'];
+    $day_2 = $_POST['day2'];
+    $day_3 = $_POST['day3'];
+    $day_4 = $_POST['day4'];
+    $day_5 = $_POST['day5'];
 
-    $age = $_POST['age'];
-    $marker = $_POST['marker'];
+    $i_text = $_POST['description'];
+    $i_text = str_replace("\n", '<br>', $i_text);
+    $i_text = str_replace("\r", '', $i_text);
 
+    $img = $_POST['img'];
+
+    if (!empty($_POST['offline'])) {
+        $i_offline = 1;
+    } else {
+        $i_offline = 0;
+    }
+
+    if (!empty($_POST['online'])) {
+        $i_online = 1;
+    } else {
+        $i_online = 0;
+    }
 
     if (isset($_FILES['example']) & $_FILES['example']['error'] === UPLOAD_ERR_OK) {
-        $uploaddir = '/images/mk/';
-
+        $uploaddir = '/images/intensive/';
         $fileTmpName = $_FILES['example']['tmp_name'];
         $image = getimagesize($fileTmpName);
         $name_img = getRandomFileName($fileTmpName);
@@ -226,18 +210,26 @@ if (isset($_POST['upload_btn'])) {
         }
     }
 
-    $sql = "UPDATE `mk` SET name = :name, description = :text, date = :date, marker = :marker, age = :age, image = :image WHERE id = :mk_id";
+    $sql = "UPDATE `intensive` SET name = :name, age = :age, date = :date, description = :text, day1 = :day1, day2 = :day2, day3 = :day3, day4 = :day4, day5 = :day5, image = :image, offline = :offline, online = :online  WHERE id = :i_id";
     $stmt = $pdo->prepare($sql);
-    $stmt->bindValue(":mk_id", $mk_id);
+    $stmt->bindValue(":i_id", $i_id);
     $stmt->bindValue(":name", $name);
-    $stmt->bindValue(":text", $text);
-    $stmt->bindValue(":date", $date);
-    $stmt->bindValue(":marker", $marker);
     $stmt->bindValue(":age", $age);
+    $stmt->bindValue(":date", $date);
+
+    $stmt->bindValue(":day1", $day_1);
+    $stmt->bindValue(":day2", $day_2);
+    $stmt->bindValue(":day3", $day_3);
+    $stmt->bindValue(":day4", $day_4);
+    $stmt->bindValue(":day5", $day_5);
+
+    $stmt->bindValue(":text", $i_text);
     $stmt->bindValue(":image", $img);
+    $stmt->bindValue(":offline", $i_offline);
+    $stmt->bindValue(":online", $i_online);
     $stmt->execute();
 
-    echo "<script>window.location.href='/functions/admin/mk_review.php';</script>";
+    echo "<script>window.location.href='/functions/admin/intensive_review.php';</script>";
 }
 
 ?>
@@ -340,6 +332,12 @@ if (isset($_POST['upload_btn'])) {
         margin-bottom: 10px;
     }
 
+    #i_name {
+        width: 500px;
+        height: 35px;
+        border-radius: 15px;
+    }
+
     button:hover {
         box-shadow: 0 15px 20px rgba(59, 0, 105, .4);
         cursor: pointer;
@@ -347,17 +345,6 @@ if (isset($_POST['upload_btn'])) {
 
     h3 {
         font-size: 13px;
-    }
-
-    .select_group {
-        width: 500px;
-        height: 30px;
-        font-size: 13px;
-        background: white;
-        border-radius: 25px;
-        border: none;
-        padding: 10px 20px;
-        margin-bottom: 10px;
     }
 
     @media only screen and (max-width: 640px) {

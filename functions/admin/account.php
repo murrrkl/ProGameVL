@@ -22,7 +22,7 @@
                     <h3 class = "menu">' . $_SESSION['login'] .", вход выполнен " .  '<a style = "width: 100%; text-align: right; text-decoration: none; " href = "/functions/admin/logout.php">Выйти</a></h3>
                 </div>
             </header>
-            <main style = "display: flex; flex-direction: column;  height: 100vh; align-items: center; margin-top: 50px;">
+            <main style = "display: flex; flex-direction: column;  min-height: 100vh; align-items: center; margin-top: 50px; margin-bottom: 50px;">
                 <h1 style = "color: #0D244F; width: 100%; text-align: center; font-size: 25px; margin-bottom: 15px;">Новости</h1>
                 <a class="btn" href="./add_news.php">
                     Добавить новость
@@ -44,12 +44,31 @@
                 <a class="btn" href="./address_review.php">
                     Список адресов
                 </a>
+
+                <h1 style = "color: #0D244F; width: 100%; text-align: center; font-size: 25px; margin-bottom: 15px;">Мастер-классы</h1>
+                <a class="btn" href="./add_mk.php">
+                    Добавить мастер-класс
+                </a>
+                <a class="btn" href="./mk_review.php">
+                    Список мастер-классов
+                </a>
+                <a class="btn" href="./mk_calendar.php">
+                    Календари
+                </a>
+
+                <h1 style = "color: #0D244F; width: 100%; text-align: center; font-size: 25px; margin-bottom: 15px;">Интенсивы</h1>
+                <a class="btn" href="./add_intensive.php">
+                    Добавить интенсив
+                </a>
+                <a class="btn" href="./intensive_review.php">
+                    Список интенсивов
+                </a>
             
             </main>
         </body>';
 ?>
 <?php else:
-    echo "<h2>Доступ закрыт!</h2>";
+    echo "<script>window.location.href='/functions/login.php';</script>";
 ?>
 
 <?php endif ?>
