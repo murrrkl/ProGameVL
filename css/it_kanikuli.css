@@ -1,0 +1,482 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    color-scheme: only light;
+    --index: calc(1vw + 1vh);
+}
+
+@font-face {
+    font-family: 'Rubik';
+    src: url(/fonts/Rubik.woff2);
+}
+
+@font-face {
+    font-family: 'Borsok';
+    src: url(/fonts/boorsok.otf);
+}
+
+@font-face {
+    font-family: 'Halogen';
+    src: url(/fonts/Halogen_0.ttf);
+}
+
+@font-face {
+    font-family: 'Evolventa';
+    src: url(/fonts/Evolventa-Regular.otf);
+}
+
+button {
+    border: none;
+}
+
+img {
+    object-fit: cover;
+}
+
+#summer_block {
+    min-height: 100vh;
+    background-color: #F1D94E;
+    background-image: url(../images/summer/menu/fon.png);
+    background-size: cover;
+    background-position: center;
+    padding: calc(var(--index) * 4) calc(var(--index) * 2) calc(var(--index) * 3) calc(var(--index) * 2);
+    
+}
+
+.section_header {
+    font-family: 'Borsok';
+    width: 100%;
+    text-align: center;
+    color: #84D634;
+    font-weight: 550;
+    font-size: calc(var(--index) * 2);
+    margin-bottom: calc(var(--index) * 1);
+    -webkit-text-stroke: 2.3px  #4E7924;
+    line-height: 1.2;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Круги */
+
+.circle {
+    margin: 0 calc(var(--index) * 1) calc(var(--index) * 1) calc(var(--index) * 1);
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 50%;
+    padding: calc(var(--index) * 2);
+    height: calc(var(--index) * 13);
+    width: calc(var(--index) * 13);    
+    -webkit-box-shadow: 9px 9px 10px 6px rgba(0, 0, 0, 0.2); 
+    -moz-box-shadow: 9px 9px 10px 6px rgba(0, 0, 0, 0.2); 
+    box-shadow: 9px 9px 10px 6px rgba(0, 0, 0, 0.2);
+}
+
+.circle_header {
+    width: 100%;
+    text-align: center;
+    font-family: 'Evolventa';
+    font-size: calc(var(--index) * 0.7);
+}
+
+.circle_text {
+    width: 100%;
+    text-align: center;
+    font-family: 'Evolventa';
+    font-size: calc(var(--index) * 0.6);
+    color: rgb(113, 119, 132);
+}
+
+.img_box, .circle_img  {
+    height: calc(var(--index) * 3.5);
+    width: calc(var(--index) * 3.5);  
+}
+
+/* Фото */
+
+.i_box {
+    height: calc(var(--index) * 21);
+    width: calc(var(--index) * 20);
+    margin: calc(var(--index) * 0.2); 
+}
+
+.second_box {
+    width: calc(var(--index) * 22);
+}
+
+#i_1_2 {
+    height: calc(var(--index) * 9.8);
+    width: 100%;
+}
+
+#i1, #i2 {
+    height: calc(var(--index) * 9.8);
+    width: calc(var(--index) * 9.8);
+}
+
+#i1 {
+    margin-right: calc(var(--index) * 0.2);
+}
+
+#i2 {
+    margin-left: calc(var(--index) * 0.2);
+}
+
+#i3 {
+    height: calc(var(--index) * 10.8);
+    width: 100%;
+    margin-top: calc(var(--index) * 0.4);
+}
+
+#i_5_6 {
+    height: 100%;
+    width: calc(var(--index) * 9.8); 
+}
+
+#i5, #i6 {
+    height: calc(var(--index) * 9.8);
+    width: calc(var(--index) * 9.8); 
+}
+
+#i5 {
+    margin-bottom: calc(var(--index) * 0.2);
+}
+
+#i6 {
+    height: calc(var(--index) * 10.8);
+    margin-top: calc(var(--index) * 0.2);
+}
+
+#i4 {
+    height: 100%;
+    width: calc(var(--index) * 11.8); 
+    margin-right: calc(var(--index) * 0.4);
+}
+
+#i1, #i2, #i3, #i4, #i5, #i6 {
+    border-radius: calc(var(--index) * 0.7); 
+    transition: 0.3s;
+}
+
+.it_img:hover {
+    transform: scale(1.05);
+}
+
+/* Скидки */
+
+.sale_header {
+    width: 100%;
+    text-align: center;
+    font-family: 'Evolventa';
+    font-size: calc(var(--index) * 1.2);
+}
+
+/* Смена */
+.smena {
+    margin: 0 calc(var(--index) * 0.5) calc(var(--index) * 1) calc(var(--index) * 0.5);
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: calc(var(--index) * 1.2);
+    padding: calc(var(--index) * 0.5);
+    height: calc(var(--index) * 15);
+    width: calc(var(--index) * 15);    
+    -webkit-box-shadow: 9px 9px 10px 6px rgba(0, 0, 0, 0.2); 
+    -moz-box-shadow: 9px 9px 10px 6px rgba(0, 0, 0, 0.2); 
+    box-shadow: 9px 9px 10px 6px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+.smena:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.smena_text {
+    width: 100%;
+    text-align: center;
+    font-family: 'Evolventa';
+    font-size: calc(var(--index) * 0.8);
+    color: rgb(113, 119, 132);
+}
+
+.img_smena {
+    height: calc(var(--index) * 6.5);
+    width: calc(var(--index) * 6.5); 
+}
+
+/* Заявка */
+
+#i_sign_popup {
+    background-color: #EAF5FE;
+    width: calc(var(--index) * 23);
+    padding: calc(var(--index) * 1) calc(var(--index) * 2);
+}
+
+#i_sign_up_header {
+    font-family: Nekst;
+    font-weight: 600;
+    font-size: calc(var(--index) * 1.5);
+    margin-bottom: 0;
+}
+
+#i_sign_up_sub_header {
+    font-family: Nekst;
+    font-weight: 200;
+    font-size: calc(var(--index) * 0.7);
+    margin-bottom: calc(var(--index) * 1);
+    color: #444444;
+}
+
+#i_sign_up_text {
+    margin-top: 0;
+    font-family: Nekst;
+    color: #333333;
+    font-weight: 300;
+    font-size: calc(var(--index) * 0.6);
+}
+
+/* Расписание */
+
+.program {
+    margin: 0 calc(var(--index) * 1) calc(var(--index) * 1) calc(var(--index) * 1);
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: calc(var(--index) * 1.2);
+    padding: calc(var(--index) * 1.5) calc(var(--index) * 1.3);
+    height: calc(var(--index) * 22);
+    width: calc(var(--index) * 16);    
+    -webkit-box-shadow: 9px 9px 10px 6px rgba(0, 0, 0, 0.2); 
+    -moz-box-shadow: 9px 9px 10px 6px rgba(0, 0, 0, 0.2); 
+    box-shadow: 9px 9px 10px 6px rgba(0, 0, 0, 0.2);
+}
+
+.program_header {
+    width: 100%;
+    text-align: center;
+    font-family: 'Evolventa';
+    font-size: calc(var(--index) * 0.8); 
+}
+
+.program_text {
+    width: 100%;
+    text-align: center;
+    font-family: 'Evolventa';
+    font-size: calc(var(--index) * 0.6);
+    color: rgb(113, 119, 132);
+    margin-bottom: calc(var(--index) * 1);
+}
+
+.pr_text {
+    font-family: 'Evolventa';
+    font-size: calc(var(--index) * 0.6);
+    min-height: calc(var(--index) * 0.6);
+    max-height: calc(var(--index) * 2);
+    width: calc(var(--index) * 12); 
+}
+
+.program_punct {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: calc(var(--index) * 2);
+    width: calc(var(--index) * 14);  
+}
+
+.marker {
+    margin: calc(var(--index) * 0.5) calc(var(--index) * 0.6) calc(var(--index) * 0.5) 0;
+    border-radius: 50%;
+    height: calc(var(--index) * 1);
+    width: calc(var(--index) * 1);
+}
+
+.program_h {
+    font-weight: 450;
+    font-size: calc(var(--index) * 1.5);
+}
+
+.blue {
+    background-color: #5AD7FF;
+}
+
+.yellow {
+    background-color: #FFBC5A;
+}
+
+.add_text {
+    font-family: 'Evolventa';
+    font-size: calc(var(--index) * 1);
+    text-align: center;
+    width: calc(var(--index) * 25); 
+}
+
+@media only screen and (max-width: 640px) {
+
+
+    #summer_block {
+        background-image: url(../images/summer/menu/fon3.png);
+        background-position: unset;
+        padding: calc(var(--index) * 4) calc(var(--index) * 0.5) calc(var(--index) * 3) calc(var(--index) * 0.5);
+    }
+
+    .section_header {
+        line-height: 1.1;
+        font-size: calc(var(--index) * 1.6);
+        -webkit-text-stroke: 1.8px  #4E7924;
+        margin-top: calc(var(--index) * 4);
+        margin-bottom: calc(var(--index) * 1.5);
+    }
+
+    /* Круги */
+    .circle {
+        margin: 0 calc(var(--index) * 0.5) calc(var(--index) * 0.9) calc(var(--index) * 0.5);
+        height: calc(var(--index) * 15);
+        width: calc(var(--index) * 15);
+    }
+
+    .circle_header {
+        font-size: calc(var(--index) * 0.8);
+    }
+
+    .circle_text {
+        font-size: calc(var(--index) * 0.8);
+    }
+
+    .img_box, .circle_img  {
+        height: calc(var(--index) * 3.5);
+        width: calc(var(--index) * 3.5);  
+    }
+
+
+    /* Фото */
+
+    .i_box {
+        height: calc(var(--index) * 27);
+        width: calc(var(--index) * 26);
+        margin: calc(var(--index) * 0.3); 
+    }
+
+    #i_1_2 {
+        height: calc(var(--index) * 12.7);
+        width: 100%;
+    }
+
+    #i1, #i2 {
+        height: calc(var(--index) * 12.7);
+        width: calc(var(--index) * 12.7);
+    }
+
+    #i1 {
+        margin-right: calc(var(--index) * 0.3);
+    }
+
+    #i2 {
+        margin-left: calc(var(--index) * 0.3);
+    }
+
+    #i3 {
+        height: calc(var(--index) * 13.7);
+        width: 100%;
+        margin-top: calc(var(--index) * 0.6);
+    }
+
+    #i_5_6 {
+        height: 100%;
+        width: calc(var(--index) * 12.7); 
+    }
+
+    #i5, #i6 {
+        height: calc(var(--index) * 13.2); 
+        width: calc(var(--index) * 12.7); 
+    }
+
+    #i5 {
+        margin-bottom: calc(var(--index) * 0.3);
+    }
+
+    #i6 {
+        margin-top: calc(var(--index) * 0.3);
+    }
+
+    #i4 {
+        height: 100%;
+        width: calc(var(--index) * 12.7); 
+        margin-right: calc(var(--index) * 0.6);
+    }
+
+    /* Заявка */
+
+    #i_sign_popup {
+        width: calc(var(--index) * 32);
+        padding: calc(var(--index) * 3) calc(var(--index) * 2);
+    }
+
+    #sign_up_btn {
+        color: black;
+    }
+
+    #i_sign_up_header {
+        font-size: calc(var(--index) * 2);
+    }
+
+    #i_sign_up_sub_header {
+        font-size: calc(var(--index) * 1);
+        margin-bottom: calc(var(--index) * 1);
+    }
+
+    #i_sign_up_text {
+        font-size: calc(var(--index) * 0.9);
+    }
+
+    /* Расписание */
+
+    .program {
+        margin: 0 auto calc(var(--index) * 1.5) auto;
+        border-radius: calc(var(--index) * 1.2);
+        padding: calc(var(--index) * 1.5) calc(var(--index) * 1.3);
+        height: calc(var(--index) * 30);
+        width: calc(var(--index) * 20);    
+    }
+
+    .program_header {
+        font-size: calc(var(--index) * 1); 
+    }
+
+    .program_text {
+        font-size: calc(var(--index) * 0.8);
+        margin-bottom: calc(var(--index) * 1.2);
+    }
+
+    .pr_text {
+        font-size: calc(var(--index) * 0.8);
+        min-height: calc(var(--index) * 0.8);
+        max-height: calc(var(--index) * 2.8);
+        width: calc(var(--index) * 14); 
+    }
+
+    .program_punct {
+        height: calc(var(--index) * 2.8);
+        width: calc(var(--index) * 18);  
+    }
+
+    .marker {
+        margin: calc(var(--index) * 0.8) calc(var(--index) * 0.6) calc(var(--index) * 0.8) 0;
+        height: calc(var(--index) * 1.2);
+        width: calc(var(--index) * 1.2);
+    }
+
+    .program_h {
+        padding-left: calc(var(--index) * 1);
+        padding-right: calc(var(--index) * 1);
+    }
+
+    /* Смена */
+
+    .smena_text {    
+        font-size: calc(var(--index) * 1);
+    }
+    
+}

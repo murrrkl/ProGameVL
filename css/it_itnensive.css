@@ -1,0 +1,514 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    color-scheme: only light;
+    --index: calc(1vw + 1vh);
+}
+
+@font-face {
+    font-family: 'Rubik';
+    src: url(/fonts/Rubik.woff2);
+}
+
+@font-face {
+    font-family: 'Borsok';
+    src: url(/fonts/boorsok.otf);
+}
+
+@font-face {
+    font-family: 'Halogen';
+    src: url(/fonts/Halogen_0.ttf);
+}
+
+@font-face {
+    font-family: 'Evolventa';
+    src: url(/fonts/Evolventa-Regular.otf);
+}
+
+button {
+    border: none;
+}
+
+img {
+    object-fit: cover;
+}
+
+#summer_block {
+    min-height: 100vh;
+    background-color: #F1D94E;
+    background-image: url(../images/summer/menu/fon.png);
+    background-size: cover;
+    background-position: center;
+    padding: calc(var(--index) * 4) calc(var(--index) * 2) calc(var(--index) * 3) calc(var(--index) * 2);
+    
+}
+
+.section_header {
+    font-family: 'Borsok';
+    width: 100%;
+    text-align: center;
+    color: #84D634;
+    font-weight: 550;
+    font-size: calc(var(--index) * 2.5);
+    margin-bottom: calc(var(--index) * 0.8);
+    -webkit-text-stroke: 2.3px  #4E7924;
+    line-height: 1.2;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.i_box {
+    margin: 0 calc(var(--index) * 1) calc(var(--index) * 2) calc(var(--index) * 1);
+    background-color: white;
+    border-radius: calc(var(--index) * 1.7);
+    padding: calc(var(--index) * 1) calc(var(--index) * 1.2) calc(var(--index) * 1.2) calc(var(--index) * 1.2);
+    height: calc(var(--index) * 26);
+    width: calc(var(--index) * 16);
+     -webkit-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.29); 
+    -moz-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.29);
+}
+
+.i_img_box {
+    position: relative;
+    height: calc(var(--index) * 10);
+    width: calc(var(--index) * 10);
+    margin: 0 auto;
+    border-radius: calc(var(--index) * 1);
+    overflow: hidden;
+}
+
+.int_img {
+    height: 100%;
+    width: 100%;
+    border-radius: calc(var(--index) * 1);
+}
+
+#i_section {
+    min-height: 100vh;
+}
+
+.i_btn {
+    height: calc(var(--index) * 2);
+    width:  100%;
+    font-weight: 250;
+    font-size: calc(var(--index) * 0.9);
+    font-family: Halogen;
+    border-radius: 25px;
+    background-color: #CFF96B;
+     -webkit-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.29); 
+    -moz-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.29); 
+    box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.29);
+    transition: 0.5s;
+    color: black;
+    margin: calc(var(--index) * 0.5) auto 0 auto;
+}
+
+.i_btn:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.i_header {
+    font-family: 'Borsok';
+    font-size: calc(var(--index) * 0.7);
+    margin: calc(var(--index) * 1.1) 0 calc(var(--index) * 0.3) 0;
+    line-height: 1.2;
+    font-weight: 400;
+    width: 100%; 
+    height: calc(var(--index) * 2);
+    text-align: center;
+}
+
+.i_age {
+    font-size: calc(var(--index) * 0.75);
+    font-family: Halogen;
+    font-weight: 250;
+    width: 100%; 
+    text-align: center;
+    margin: 0 0 calc(var(--index) * 0.3) 0;
+}
+
+.days, .topic {
+    font-family: Evolventa;
+    font-size: calc(var(--index) * 0.7);
+    font-weight: 100;
+    margin: calc(var(--index) * 0.3) 0;
+}
+
+.days {
+    font-weight: 750;
+    font-size: calc(var(--index) * 0.75);
+    height: calc(var(--index) * 1);
+    overflow: hidden;
+}
+
+.off_box, .online_box {
+    top: calc(var(--index) * 0.5);
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: calc(var(--index) * 1);
+    padding: calc(var(--index) * 0.1) calc(var(--index) * 0.2);
+     -webkit-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.29); 
+    -moz-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.29);
+    height: calc(var(--index) * 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.format_text {
+    font-family: Halogen;
+    font-weight: 100;
+    font-size: calc(var(--index) * 0.5);
+}
+
+.off_box {
+    left: calc(var(--index) * 0.6);
+    width: calc(var(--index) * 2); 
+}
+
+.online_box {
+    left: calc(var(--index) * 3.1);
+    width: calc(var(--index) * 2.5);
+}
+
+/* Всплывающее окно */
+#i_popup {
+    position: relative;
+    border-radius: calc(var(--index) * 1.7);
+    padding: calc(var(--index) * 1.5) calc(var(--index) * 1.2) calc(var(--index) * 1) calc(var(--index) * 1.2);
+    min-height: calc(var(--index) * 25);
+    width: calc(var(--index) * 50);
+     -webkit-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.29); 
+    -moz-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.29); 
+    box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.29);
+    justify-content: start;
+}
+
+#close_i {
+    position: absolute;
+    width:  calc(var(--index) * 2);
+    right: calc(var(--index) * 2);
+    top: calc(var(--index) * 1.2);
+}
+
+#close_i:hover {
+    cursor: pointer;
+}
+
+.i_description_block {
+    width:  calc(var(--index) * 25);
+    height:  calc(var(--index) * 17);
+    padding: 0 0 calc(var(--index) * 1) calc(var(--index) * 1.5);
+}
+
+.i_description {
+    width: 100%;
+    text-align: left;
+    font-weight: 250;
+    font-size: calc(var(--index) * 0.9);
+    font-family: Halogen;
+    margin-top: 0;
+}
+
+.time_line {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.time_circle {
+    border-radius: 50%;
+    background-color: black;
+    height:  calc(var(--index) * 0.2);
+    width: calc(var(--index) * 0.2);
+    margin: auto calc(var(--index) * 0.7);
+}
+
+.time {
+    font-family: Evolventa;
+    font-weight: 150;
+    margin: calc(var(--index) * 0.3) 0;
+    font-size: calc(var(--index) * 0.7);
+    text-align: left;
+}
+
+.i_img_block, .i_img {
+    height:  calc(var(--index) * 17);
+    width:  calc(var(--index) * 17);
+    border-radius: calc(var(--index) * 1.2);
+}
+
+.date {
+    height:  calc(var(--index) * 9.5);
+    justify-content: start;
+    align-items: flex-start;
+}
+
+.i_pay {
+    width: 100%;
+    text-align: left;
+    font-weight: 150;
+    font-size: calc(var(--index) * 0.9);
+    font-family: Halogen;
+}
+
+.i_money {
+    font-family: Evolventa;
+    font-weight: 100;
+    font-size: calc(var(--index) * 0.9);
+}
+
+.in_btn {
+    height: calc(var(--index) * 2);
+    width:  calc(var(--index) * 15);
+    font-weight: 250;
+    font-size: calc(var(--index) * 0.9);
+    font-family: Halogen;
+    border-radius: 25px;
+    background-color: #CFF96B;
+     -webkit-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.29); 
+    -moz-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.29); 
+    box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.29);
+    transition: 0.5s;
+    color: black;
+}
+
+.in_btn:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.in_header {
+    font-size: calc(var(--index) * 1.2);
+    font-weight: 250;
+    font-family: Halogen;
+    margin: calc(var(--index) * 0.5) auto;
+}
+
+.dotted_header {
+    width: calc(var(--index) * 30);
+    margin-bottom: calc(var(--index) * 0.5);
+}
+
+.dotted_header div {
+    border-radius: 50%;
+    background-color: black;
+    margin: 0 calc(var(--index) * 0.4);
+    height:  calc(var(--index) * 0.2);
+    width: calc(var(--index) * 0.2);
+    margin-bottom: calc(var(--index) * 1);
+}
+
+/* Заявка */
+
+#i_sign_popup {
+    background-color: #EAF5FE;
+    width: calc(var(--index) * 23);
+    padding: calc(var(--index) * 1) calc(var(--index) * 2);
+}
+
+#i_sign_up_header {
+    font-family: Nekst;
+    font-weight: 600;
+    font-size: calc(var(--index) * 1.5);
+    margin-bottom: 0;
+}
+
+#i_sign_up_sub_header {
+    font-family: Nekst;
+    font-weight: 200;
+    font-size: calc(var(--index) * 0.7);
+    margin-bottom: calc(var(--index) * 1);
+    color: #444444;
+}
+
+#i_sign_up_text {
+    margin-top: 0;
+    font-family: Nekst;
+    color: #333333;
+    font-weight: 300;
+    font-size: calc(var(--index) * 0.6);
+}
+
+
+@media only screen and (max-width: 640px) {
+
+    #summer_block {
+        background-image: url(../images/summer/menu/fon3.png);
+        background-position: unset;
+    }
+
+    .section_header {
+        line-height: 1.1;
+        font-size: calc(var(--index) * 2);
+        -webkit-text-stroke: 1.8px  #4E7924;
+        margin-top: calc(var(--index) * 4);
+        margin-bottom: calc(var(--index) * 1.3);
+    }
+
+    .i_box {
+        margin: 0 auto calc(var(--index) * 2) auto;
+        border-radius: calc(var(--index) * 1.7);
+        padding: calc(var(--index) * 1.2) calc(var(--index) * 1.2) calc(var(--index) * 1.2) calc(var(--index) * 1.2);
+        height: calc(var(--index) * 37);
+        width: calc(var(--index) * 22);
+    }
+
+    .i_img_box {
+        height: calc(var(--index) * 15);
+        width: calc(var(--index) * 15);
+        margin: 0 auto;
+        border-radius: calc(var(--index) * 0.5);
+    }
+
+    .int_img {
+        height: 100%;
+        width: 100%;
+    }
+
+    .i_btn {
+        height: calc(var(--index) * 3);
+        width:  100%;
+        font-size: calc(var(--index) * 1.2);
+        margin: calc(var(--index) * 1) auto 0 auto;
+    }
+
+    .i_header {
+        font-size: calc(var(--index) * 1.1);
+        margin: calc(var(--index) * 1.1) 0 calc(var(--index) * 0.4) 0;
+        line-height: 1.1;
+        height: calc(var(--index) * 2.2);
+    }
+
+    .i_age {
+        font-size: calc(var(--index) * 1.1);
+        margin: 0 0 calc(var(--index) * 0.4) 0;
+    }
+
+    .days, .topic {
+        font-size: calc(var(--index) * 0.9);
+        margin: calc(var(--index) * 0.6) 0;
+    }
+
+    .days {
+        font-size: calc(var(--index) * 1);
+        height: calc(var(--index) * 1.2);
+    }
+
+    .off_box, .online_box {
+        border-radius: calc(var(--index) * 0.9);
+        padding: calc(var(--index) * 0.3);
+        height: calc(var(--index) * 1.8);
+        top: calc(var(--index) * 0.75);
+    }
+
+    .format_text {
+        font-size: calc(var(--index) * 1);
+    }
+
+    .off_box {
+        left: calc(var(--index) * 1);
+        width: calc(var(--index) * 3.5); 
+    }
+
+    .online_box {
+        left: calc(var(--index) * 5.2);
+        width: calc(var(--index) * 4.5);
+    }
+
+
+    /* Всплывающее окно */
+
+    #i_popup {
+        border-radius: calc(var(--index) * 1.7);
+        padding: calc(var(--index) * 1.5) calc(var(--index) * 1.2) calc(var(--index) * 1) calc(var(--index) * 1.2);
+        min-height: calc(var(--index) * 35);
+        width: calc(var(--index) * 32);
+    }
+
+    #close_i {
+        width:  calc(var(--index) * 2);
+        right: calc(var(--index) * 1.8);
+        top: calc(var(--index) * 1.3);
+    }
+
+    .i_description_block {
+        height:  calc(var(--index) * 32);
+        padding: calc(var(--index) * 1) 0 calc(var(--index) * 1) 0 calc(var(--index) * 1.5);
+        width:  calc(var(--index) * 28);
+        margin-top: calc(var(--index) * 1);
+    }
+
+    .in_header {
+        font-size: calc(var(--index) * 1.3);
+        margin: calc(var(--index) * 1.4) auto calc(var(--index) * 0.5) auto;
+    }
+
+    .i_description {
+        font-size: calc(var(--index) * 1);
+    }
+
+    .date {
+        height:  calc(var(--index) * 17);
+    }
+
+    .time_circle {
+        height:  calc(var(--index) * 0.3);
+        width: calc(var(--index) * 0.3);
+        margin: auto calc(var(--index) * 0.7);
+    }
+
+    .time {
+        margin: calc(var(--index) * 0.5) 0;
+        font-size: calc(var(--index) * 1);
+    }
+
+    .i_pay {
+
+        font-size: calc(var(--index) * 1.2);
+    }
+
+    .i_money {
+        font-size: calc(var(--index) * 1.2);
+    }
+
+    .in_btn {
+        height: calc(var(--index) * 3);
+        width:  calc(var(--index) * 18);
+        font-size: calc(var(--index) * 1.1);
+        margin-top: calc(var(--index) * 1);
+    }
+
+    /* Заявка */
+
+    #i_sign_popup {
+        width: calc(var(--index) * 32);
+        padding: calc(var(--index) * 3) calc(var(--index) * 2);
+    }
+
+    #sign_up_btn {
+        color: black;
+    }
+
+    #i_sign_up_header {
+        font-size: calc(var(--index) * 2);
+    }
+
+    #i_sign_up_sub_header {
+        font-size: calc(var(--index) * 1);
+        margin-bottom: calc(var(--index) * 1);
+    }
+
+    #i_sign_up_text {
+        font-size: calc(var(--index) * 0.9);
+    }
+
+}

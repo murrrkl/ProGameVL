@@ -32,6 +32,7 @@ img {
 
 #summer_block {
     height: 100vh;
+    background-color: #F1D94E;
     background-image: url(../images/summer/menu/fon.png);
     background-size: cover;
     background-position: center;
@@ -97,6 +98,19 @@ img {
     border: calc(var(--index) * 0.2) solid #008597;
 }
 
+#c_1:hover #first_sum {
+    color: rgba(83, 77, 77, 1);
+}
+
+#c_2:hover #second_sum {
+    color: rgba(83, 77, 77, 1);
+}
+
+#c_3:hover #third_sum {
+    color: rgba(83, 77, 77, 1);
+}
+
+
 
 .circle_text {
     font-family:'Borsok';
@@ -107,9 +121,10 @@ img {
 .description_text {
     font-family: Halogen;
     font-size: calc(var(--index) * 0.8);
-    color: #534D4D;
+    color: rgba(83, 77, 77, 0.001);
     text-align: center;
     width: calc(var(--index) * 12);
+    transition: 0.5s;
 }
 
 
@@ -163,6 +178,7 @@ img {
     .description_text {
         width: calc(var(--index) * 18);
         font-size: calc(var(--index) * 1.1);
+        color: rgba(83, 77, 77, 1);
     }
 
     .circle {
