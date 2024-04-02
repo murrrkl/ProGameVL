@@ -21,12 +21,12 @@
         <link rel="preload" href="/fonts/Halogen_0.ttf" as="font" type="font/ttf" crossorigin>
         <link rel="preload" href="/fonts/boorsok.otf" as="font" type="font/otf" crossorigin>
         <link rel="preload" href="/fonts/Evolventa-Regular.otf" as="font" type="font/otf" crossorigin>
-        <link rel="stylesheet" href="/css/header.css">
-        <link rel="stylesheet" href="/css/master_class.css">
+        <link rel="stylesheet" href="/css/header.css?14">
+        <link rel="stylesheet" href="/css/master_class.css?13">
         <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script defer src="/js/maska-nomera.js"></script>
         <script defer src = "/js/pop_up.js"></script>
-        <script defer src = "/js/mk.js"></script>
+        <script defer src = "/js/mk.js?7"></script>
     </head>
     <body class="overflow_y">
 
@@ -56,7 +56,18 @@
                     return '#5AD7FF;"';
                 } else if ($marker == "purple") {
                     echo '#C57BFF;"';
-                } else {
+                } else if ($marker == "darkblue") {
+                    echo '#5168E3;"';
+                } else if ($marker == "bordo") {
+                    echo '#B90F0F;"';
+                } else if ($marker == "salat") {
+                    echo '#81FF76;"';
+                } else if ($marker == "grey") {
+                    echo '#D2CDD1;"';
+                } else if ($marker == "light_blue") {
+                    echo '#00FEFE;"';
+                } 
+                else {
                     echo '#FF7BD2;"';
                 }
             }
@@ -167,11 +178,15 @@
 
                                         $marker = $row["marker"];
                                         $color = getColor($marker);
+                                        $mk_name = $row["name"];
+                                        $mk_name = str_replace('"', "*", $mk_name);
+                                        $mk_desc = $row["description"];
+                                        $mk_desc = str_replace('"', "*", $mk_desc);
 
                                         echo $color . '></div>';
                                         echo '<h1 class = "mk_name" onclick="get_info(';
-                                        echo "'" . $row["name"];
-                                        echo "','" . $row["description"];
+                                        echo "'" . $mk_name;
+                                        echo "','" . $mk_desc;
                                         echo "','" . $row["date"];
                                         echo "','" . $row["image"];
                                         echo "')";
@@ -215,11 +230,15 @@
 
                                         $marker = $row["marker"];
                                         $color = getColor($marker);
+                                        $mk_name = $row["name"];
+                                        $mk_name = str_replace('"', "*", $mk_name);
+                                        $mk_desc = $row["description"];
+                                        $mk_desc = str_replace('"', "*", $mk_desc);
 
                                         echo $color . '></div>';
                                         echo '<h1 class = "mk_name" onclick="get_info(';
-                                        echo "'" . $row["name"];
-                                        echo "','" . $row["description"];
+                                        echo "'" . $mk_name;
+                                        echo "','" . $mk_desc;
                                         echo "','" . $row["date"];
                                         echo "','" . $row["image"];
                                         echo "')";
@@ -263,11 +282,15 @@
 
                                         $marker = $row["marker"];
                                         $color = getColor($marker);
+                                        $mk_name = $row["name"];
+                                        $mk_name = str_replace('"', "*", $mk_name);
+                                        $mk_desc = $row["description"];
+                                        $mk_desc = str_replace('"', "*", $mk_desc);
 
                                         echo $color . '></div>';
                                         echo '<h1 class = "mk_name" onclick="get_info(';
-                                        echo "'" . $row["name"];
-                                        echo "','" . $row["description"];
+                                        echo "'" . $mk_name;
+                                        echo "','" . $mk_desc;
                                         echo "','" . $row["date"];
                                         echo "','" . $row["image"];
                                         echo "')";
@@ -311,11 +334,15 @@
 
                                         $marker = $row["marker"];
                                         $color = getColor($marker);
+                                        $mk_name = $row["name"];
+                                        $mk_name = str_replace('"', "*", $mk_name);
+                                        $mk_desc = $row["description"];
+                                        $mk_desc = str_replace('"', "*", $mk_desc);
 
                                         echo $color . '></div>';
                                         echo '<h1 class = "mk_name" onclick="get_info(';
-                                        echo "'" . $row["name"];
-                                        echo "','" . $row["description"];
+                                        echo "'" . $mk_name;
+                                        echo "','" . $mk_desc;
                                         echo "','" . $row["date"];
                                         echo "','" . $row["image"];
                                         echo "')";
@@ -354,6 +381,7 @@
                 <h1 id = "mk_sign_up_header">Запишитесь на мастер-класс</h1>
                 <h2 id = "mk_sign_up_sub_header">Оставьте свои контакты и наш менеджер свяжется с вами в ближайшее время</h2>
                 <form id = "mk_contact_form" action="">
+                    <input type="hidden" id="form_mk_name" name="mk_name" value="">
                     <input required id = "parent_name" type="text" name = "parent_name" class = "input_sign_up" placeholder="Ваше имя"><br>
                     <input required id = "child_name" type="text" name = "child_name" class = "input_sign_up" placeholder="Имя ребёнка"><br>
                     <input required id = "phone_mask" name ="phone" type="tel" class = "input_sign_up" placeholder="Номер телефона"><br>
@@ -368,7 +396,7 @@
         <div id = "mk_up_popup" class="popup-bg">
             <div id = "mk_popup" class  = "popup flex">
                 <img id = "close_mk" src = "images/summer/mk/close.png">
-                <h1 class = "mk_header">Mineacraft Education Edu</h1>
+                <h1 class = "mk_header"></h1>
                 <div class = "dotted_header flex">
                     <div></div>
                     <div></div>
@@ -394,9 +422,9 @@
                         <img class = "mk_img" src = "images/summer/mk/minecraft.png">
                     </div>
                     <div class = "mk_description_block">
-                        <p class = "mk_description"> Создадим мини-игры внутри Minecraft, а также наделим виртуального помощника искусственным интеллектом. </p>
+                        <p class = "mk_description"></p>
                         <div class = "date"></div>
-                        <h2 class = "mk_pay"> Стоимость: <span class = "mk_money"> 1599р.</span></h2>
+                        <h2 class = "mk_pay"> Стоимость: <span class = "mk_money"> 2 500р.</span></h2>
                         <button class = "mk_btn">Записаться</button>
                     </div>
                 </div>
@@ -542,6 +570,13 @@
         <a href="https://api.whatsapp.com/send?phone=79841953014">
             <div id = "whats_app" class="flex">
                 <img src = "/images/whatsapp.webp" width="100%" height="100%">
+            </div>
+        </a>
+
+        <a href="https://progamevl.ru/summer.php">
+            <div id = "summer_circle" class="flex">
+                <h1><span style="width:100%; text-align: center; margin-bottom: 10px;">Лето</span>
+                <span style="color:rgb(228, 135, 23);">20</span><span style="color: rgb(255, 255, 255);">24</span></h1>
             </div>
         </a>
                 <!-- Yandex.Metrika counter -->

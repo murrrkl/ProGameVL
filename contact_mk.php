@@ -1,11 +1,10 @@
 <?php
 if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-    $message = 'Запись на мастер-класс:' . "\n";
+    $message = 'Запись на мастер-класс:' . $_POST["mk_name"] ."\n";
     $message .= 'Имя родителя: ' . $_POST["parent_name"] . "\n";
     $message .= 'Имя ребёнка: ' . $_POST["child_name"] . "\n";
     $message .= 'Телефон: ' . $_POST["phone"] . "\n";
     $message .= 'Возраст: ' . $_POST["age"] . "\n";
-    $message .= 'Филиалы: ' . "\n";
 
     $mailTo = "office@progamevl.ru"; // Ваш e-mail
     $subject = "Запись на мастер-класс"; // Тема сообщения
