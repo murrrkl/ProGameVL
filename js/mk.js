@@ -1,10 +1,30 @@
 function get_info(name, desc, date, img) {
     let path = "/functions/admin/images/mk/" + img;
     let mk_date = date.split(',');
+    let mk_name = name;
+    let mk_desc = desc;
+
+    while (mk_name.indexOf('*') != -1) {
+        mk_name = mk_name.replace('*', '"');
+    }
+
+    while (mk_desc.indexOf('*') != -1) {
+        mk_desc = mk_desc.replace('*', '"');
+    }
 
     $('.mk_img').attr("src", path);
-    $('.mk_header').text(name);
-    $('.mk_description').text(desc);
+
+    $('.mk_header').text(mk_name);
+
+    mk_desc = mk_desc.split('<br>');
+
+    if (mk_desc.length > 1) {   
+        for (let i = mk_desc.length - 1; i > 0; i--) {
+            $(".mk_description").prepend(mk_desc[i]);
+            $(".mk_description").prepend("<br>");
+        }
+    }
+    $(".mk_description").prepend(mk_desc[0]);
 
     for (let i = mk_date.length - 1; i >= 0; i--) {
         let s = '<div class = "time_line"><div class = "time_circle"></div><h2 class = "time">' + mk_date[i] + '</h2></div>';
@@ -20,6 +40,7 @@ $('#close_mk').click(function() {
     $('#mk_up_popup').fadeOut(700);
 
     setTimeout(() => {
+            $(".mk_description").text("");
             $( ".time_line" ).remove();
     }, 700);
 });
@@ -350,6 +371,14 @@ $('#age_12_16').click(function() {
 
 /* Заявка */
 $('.mk_btn').click(function() {
+    let form_mk_name = document.querySelectorAll('.mk_header')[0].textContent;
+
+    while (form_mk_name.indexOf('"') != -1) {
+        form_mk_name = form_mk_name.replace('"', '');
+    }
+    
+    document.getElementById("form_mk_name").value = form_mk_name;
+
     $('#mk_up_popup').fadeOut(300);
     setTimeout(() => {
         $('#mk_up_sign_popup').fadeIn(400);
@@ -357,6 +386,8 @@ $('.mk_btn').click(function() {
 });
 
 $('#cl_sign_mk').click(function() {
+    $( ".time_line" ).remove();
+    $(".mk_description").text("");
     $('#mk_up_sign_popup').fadeOut(300);
 });
 

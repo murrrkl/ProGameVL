@@ -8,7 +8,13 @@ function get_info(name, desc, date, img) {
 
     $('.i_img').attr("src", path);
 
-    let i_desc = desc.split('<br>');
+    let i_desc = desc;
+
+    while (i_desc.indexOf('*') != -1) {
+        i_desc = i_desc.replace('*', '"');
+    }
+
+    i_desc = i_desc.split('<br>');
    
    	if (i_desc.length > 1) {
    		for (let i = i_desc.length - 1; i > 0; i--) {
@@ -71,6 +77,13 @@ $(document).ready(function () {
 
 /* Заявка */
 $('.in_btn').click(function() {
+    let form_i_name = document.querySelectorAll('.in_header')[0].textContent;
+    while (form_i_name.indexOf('"') != -1) {
+        form_i_name = form_i_name.replace('"', '');
+    }
+    
+    document.getElementById("form_i_name").value = form_i_name;
+
     $('#i_up_popup').fadeOut(300);
     setTimeout(() => {
         $('#i_up_sign_popup').fadeIn(400);
