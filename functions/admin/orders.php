@@ -23,49 +23,32 @@
                 </div>
             </header>
             <main style = "display: flex; flex-direction: column;  min-height: 100vh; align-items: center; margin-top: 50px; margin-bottom: 50px;">
-                <h1 style = "color: #0D244F; width: 100%; text-align: center; font-size: 25px; margin-bottom: 15px;">Новости</h1>
-                <a class="btn" href="./add_news.php">
-                    Добавить новость
+                <h1 style = "color: #0D244F; width: 100%; text-align: center; font-size: 25px; margin-bottom: 15px;">Выберите филиал:</h1>
+                <a class="btn" href="./churkin.php">
+                    Чуркин
                 </a>
-                <a class="btn" href="./news_review.php">
-                    Список новостей
+                <a class="btn" href="./ivanovskaya.php">
+                    Ивановская
                 </a>
-                <h1 style = "color: #0D244F; width: 100%; text-align: center; font-size: 25px; margin-bottom: 15px;">Призы</h1>
-                <a class="btn" href="./add_product.php">
-                    Добавить приз
+                <a class="btn" href="./egersheld.php">
+                    Эгершельд
                 </a>
-                <a class="btn" href="./product_review.php">
-                    Список призов
+                <a class="btn" href="./lugovaya.php">
+                    Луговая
                 </a>
-                <a class="btn" href="./orders.php">
-                    Заказы
+                <a class="btn" href="./zarya.php">
+                    Заря
                 </a>
-                <h1 style = "color: #0D244F; width: 100%; text-align: center; font-size: 25px; margin-bottom: 15px;">Адреса</h1>
-                <a class="btn" href="./add_address.php">
-                    Добавить адрес
+                <a class="btn" href="./snegovaya.php">
+                    Снеговая падь
                 </a>
-                <a class="btn" href="./address_review.php">
-                    Список адресов
+                <a class="btn" href="./pervaya.php">
+                    Первая речка
                 </a>
-
-                <h1 style = "color: #0D244F; width: 100%; text-align: center; font-size: 25px; margin-bottom: 15px;">Мастер-классы</h1>
-                <a class="btn" href="./add_mk.php">
-                    Добавить мастер-класс
+                <a class="btn" href="./online.php">
+                    Онлайн
                 </a>
-                <a class="btn" href="./mk_review.php">
-                    Список мастер-классов
-                </a>
-                <a class="btn" href="./mk_calendar.php">
-                    Календари
-                </a>
-
-                <h1 style = "color: #0D244F; width: 100%; text-align: center; font-size: 25px; margin-bottom: 15px;">Интенсивы</h1>
-                <a class="btn" href="./add_intensive.php">
-                    Добавить интенсив
-                </a>
-                <a class="btn" href="./intensive_review.php">
-                    Список интенсивов
-                </a>
+                
             
             </main>
         </body>';
