@@ -1,0 +1,447 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    color-scheme: only light;
+    --index: calc(1vw + 1vh);
+}
+
+@font-face {
+    font-family: 'Rubik';
+    src: url(/fonts/Rubik.woff2);
+}
+
+@font-face {
+    font-family: 'Inter-Bold';
+    src: url(/fonts/Inter-Bold.woff2);
+}
+
+@font-face {
+    font-family: 'segoeprint';
+    src: url(/fonts/segoeprint.woff);
+}
+
+@font-face {
+    font-family: 'Evolventa';
+    src: url(/fonts/Evolventa-Regular.otf);
+}
+
+button {
+    border: none;
+}
+
+img {
+    object-fit: cover;
+}
+
+#shop {
+    background: linear-gradient(150deg, #e6d3f9 0%, #e6d3f9 50%, #cea0f1 50%, #cea0f1 100%);
+    padding: calc(var(--index) * 4) calc(var(--index) * 3) calc(var(--index) * 3) calc(var(--index) * 3);
+}
+
+.shop_header {
+    font-family: 'Rubik';
+    width: 100%;
+    text-align: center;
+    color: #6600FF;
+    font-weight: 300;
+    font-size: calc(var(--index) * 1.1);
+    margin-top: calc(var(--index) * 1);
+    margin-bottom: calc(var(--index) * 1);
+}
+
+.last_header {
+    color: black;
+    font-weight: 200;
+    margin-top: calc(var(--index) * 1.3);
+    font-size: calc(var(--index) * 0.9);
+}
+
+.section_header {
+    font-family: 'Rubik';
+    width: 100%;
+    text-align: center;
+    color: #744af1;
+    font-weight: 550;
+    font-size: calc(var(--index) * 2.5);
+    margin-bottom: 0;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.product_box {
+    transition:transform 0.3s ease-out;
+    background-color: rgba(255,255,255,0.8);
+    width: calc(var(--index) * 13);
+    height: calc(var(--index) * 21);
+    padding: calc(var(--index) * 1.3) calc(var(--index) * 2.5);
+    border-radius: calc(var(--index) * 1.2);
+    margin: calc(var(--index) * 0.6) calc(var(--index) * 0.4);
+}
+
+.product_img {
+    width: calc(var(--index) * 10);
+    height: calc(var(--index) * 10);
+    border-radius: calc(var(--index) * 1);
+}
+
+.product_name_box {
+    height: calc(var(--index) * 1.4);
+}
+
+.product_name {
+    font-family: 'segoeprint';
+    text-align: center;
+    width: 100%;
+    margin: calc(var(--index) * 0.4) 0 0 0;
+    font-weight: 550;
+    align-items: center;
+    line-height: calc(var(--index) * 0.7);
+    font-size: calc(var(--index) * 0.7);
+}
+
+.price_box {
+    width: auto;
+}
+
+.product_number {
+    font-family: 'Rubik';
+    font-family: 'segoeprint';
+    width: 100%;
+    text-align: center;
+    font-weight: 300;
+    margin: calc(var(--index) * 0.2) 0 0 0;
+    font-size: calc(var(--index) * 0.6);
+}
+
+.product_price {
+    margin:  0;
+    font-size: calc(var(--index) * 1.3);
+    font-family: 'Inter-Bold';
+}
+
+.token {
+    width: calc(var(--index) * 2);
+    height: calc(var(--index) * 2);
+    margin-left: calc(var(--index) * 0.3);
+}
+
+#question_block {
+    width: calc(var(--index) * 40);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+}
+
+.spoiler_wrap {
+    position: relative;
+    margin-bottom: 20px;
+    background: white;
+    width: calc(var(--index) * 36);
+    border-radius: calc(var(--index) * 0.7);
+}
+
+.spoiler_title {
+    cursor: pointer;
+    font-family: Rubik;
+    font-weight: 400;
+    font-size: calc(var(--index) * 0.9);
+    margin: 0;
+}
+
+.spoiler_title, .spoiler_content {
+    padding: calc(var(--index) * 1) calc(var(--index) * 2);
+}
+
+.spoiler_content {
+    padding-top: 0;
+    padding-bottom: 10px;
+    transition: 0.15s ease-out;
+    height: auto;
+    max-height: 0px;
+    overflow: hidden;
+    margin-top: -10px;
+    opacity: 0;
+    font-weight: 300;
+    font-size: calc(var(--index) * 0.85);
+    color: #444;
+}
+
+.spoiler_content p, .spoiler_content ul {
+    font-size: 16px;
+    margin: 20px 0;
+    color: #333;
+    line-height: 1.4;
+}
+
+.spoiler_content.open {
+    margin-top: 0;
+    max-height: 100%;
+    opacity: 1;
+}
+
+.spoiler_title .spoiler_arrow {
+    display: inline-block;
+    margin-left: calc(var(--index) * 0.6);
+    font-size: calc(var(--index) * 0.6);
+    transition: all .1s;
+    vertical-align: middle;
+}
+
+.spoiler_arrow {
+    position: absolute;
+    top: calc(var(--index) * 1.5);
+    right: calc(var(--index) * 1.5);
+}
+
+.spoiler_title .spoiler_arrow svg {
+    fill: #5C4AF1;
+    width: calc(var(--index) * 0.6);
+}
+.spoiler_title .spoiler_arrow.open {
+    transform: rotate(180deg);
+}
+
+.product_btn {
+    border-radius: 50%;
+    background-color: Lavender;
+    width: calc(var(--index) * 1.3);
+    height: calc(var(--index) * 1.3);
+    font-family: Evolventa;
+    font-weight: 100;
+    font-size: calc(var(--index) * 0.8);
+    color: rgba(0, 0, 0, 0.7);
+    text-align: center;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+}
+
+.product_btn:hover {
+    cursor: pointer;
+    transform:scale(1.05);
+    z-index:10;
+}
+
+.product_count {
+    font-family: Evolventa;
+    font-weight: 100;
+    width: calc(var(--index) * 1.1);
+    text-align: center;
+    font-size: calc(var(--index) * 0.8);
+    margin: 0px calc(var(--index) * 0.6);
+}
+
+/* Заказ */
+.order_block {
+    width: calc(var(--index) * 28);
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: calc(var(--index) * 0.5);
+    border: 1.5px dashed MediumPurple;
+}
+
+.order_header {
+    font-family: Evolventa;
+    font-weight: 700;
+    width: 100%;
+    text-align: center;
+    font-size: calc(var(--index) * 0.9);
+}
+
+.order_text, .order_error, .order_sum_text{
+    font-family: Evolventa;
+    font-weight: 100;
+    width: 100%;
+    text-align: center;
+    font-size: calc(var(--index) * 0.6);
+    margin: auto;
+}
+
+.order_error {
+    color: Maroon;
+    margin-top: calc(var(--index) * 0.3);
+}
+
+.order_input {
+    width: calc(var(--index) * 25);
+    height: calc(var(--index) * 2);
+    font-family: Evolventa;
+    font-size: 13px;
+    background: white;
+    border-radius: 25px;
+    border: none;
+    padding: 10px 20px;
+    display: block;
+    margin: calc(var(--index) * 0.5) auto;
+}
+
+#order_sum {
+    font-family: 'Inter-Bold';
+    font-weight: 100;
+    text-align: center;
+    font-size: calc(var(--index) * 0.75);
+    margin: 0px;
+}
+
+#order_btn {
+    width: calc(var(--index) * 10);
+    height: calc(var(--index) * 2);
+    background-color: MediumPurple;
+    border: none;
+    border-radius: 25px;
+    font-size: 18px;
+    font-family: "Evolventa-Regular";
+    display: block;
+    margin: auto;
+    margin-top: calc(var(--index) * 0.5);
+    color: white;
+    transition: 0.3s;
+}
+
+#order_btn:hover {
+    cursor: pointer;
+    transform:scale(1.05);
+    z-index:10;
+}
+
+
+
+@media only screen and (max-width: 640px) {
+    #shop {
+        padding: calc(var(--index) * 5) calc(var(--index) * 0.6) calc(var(--index) * 3) calc(var(--index) * 0.6);
+    }
+
+    .section_header {
+        font-size: calc(var(--index) * 3);
+        margin-bottom: calc(var(--index) * 1.3);
+    }
+
+    .shop_header {
+        font-size: calc(var(--index) * 1.2);
+        margin-top: calc(var(--index) * 0.5);
+        margin-bottom: calc(var(--index) * 1);
+        padding: 0 calc(var(--index) * 0.3);
+    }
+
+    .product_box {
+        width: 180px;
+        height: calc(var(--index) * 26);
+        padding: calc(var(--index) * 1.3) calc(var(--index) * 2.5);
+        margin: calc(var(--index) * 0.5) calc(var(--index) * 0.4);
+    }
+
+    .product_img {
+        width: calc(var(--index) * 12);
+        height: calc(var(--index) * 12);
+    }
+
+    .product_name_box {
+        height: calc(var(--index) * 2.5);
+    }
+
+    .product_name {
+        margin: calc(var(--index) * 0.6) 0 0 0;
+        line-height: calc(var(--index) * 1);
+        font-weight: 570;
+        font-size: calc(var(--index) * 1);
+    }
+
+    .product_number {
+        margin: calc(var(--index) * 0.2) 0 0 0;
+        font-size: calc(var(--index) * 0.8);
+    }
+
+        #questions {
+        padding: calc(var(--index) * 2.5) calc(var(--index) * 1.5);
+    }
+
+    #questions_header {
+        margin-top: 20px;
+        font-size: calc(var(--index) * 2.3);
+    }
+
+    #question_block {
+        width: 100%;
+    }
+
+    .spoiler_wrap {
+        margin-bottom: calc(var(--index) * 0.8);
+        width: 100%;
+        border-radius: calc(var(--index) * 0.5);
+    }
+
+    .spoiler_title {
+        font-size: calc(var(--index) * 1.2);
+        width: calc(var(--index) * 28);
+        height: calc(var(--index) * 5.5);
+    }
+
+    .spoiler_title .spoiler_arrow svg {
+        width: calc(var(--index) * 1.3);
+    }
+
+    .spoiler_arrow {
+        width: calc(var(--index) * 1.5);
+        height: calc(var(--index) * 1);
+        top: calc(var(--index) * 2);
+        right: calc(var(--index) * 2);
+    }
+
+    .product_btn {
+        width: calc(var(--index) * 1.8);
+        height: calc(var(--index) * 1.8);
+        font-size: calc(var(--index) * 1.2);
+    }
+
+    .product_count_box {
+        height: calc(var(--index) * 2);
+    }
+
+    .product_count {
+        width: calc(var(--index) * 1.3);
+        font-size: calc(var(--index) * 1.2);
+    }
+
+
+/* Заказ */
+    .order_block {
+        width: calc(var(--index) * 30);
+    }
+
+    .order_header {
+        font-size: calc(var(--index) * 1.3);
+    }
+
+    .order_text, .order_error, .order_sum_text{
+        font-size: calc(var(--index) * 1);
+    }
+
+    .order_input {
+        width: calc(var(--index) * 27);
+        height: calc(var(--index) * 2);
+        font-size: 10px;
+    }
+
+    #order_sum {
+        font-size: calc(var(--index) * 1);
+    }
+
+    #order_btn {
+        width: calc(var(--index) * 20);
+        height: calc(var(--index) * 3);
+        font-size: 14px;
+        margin-top: calc(var(--index) * 0.8);
+    }
+}
