@@ -17,9 +17,9 @@ function setOrderText() {
 		str += " " + current_info[0];
 		str += " (" + current_info[2] + "шт.)";
 		str += "<br>";
-		order_text.innerHTML = str;
-		order_text_form.value = str;
 	}
+	order_text.innerHTML = str;
+	order_text_form.value = str;
 }
 
 function minus(id, name, price) {
