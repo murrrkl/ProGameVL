@@ -18,7 +18,7 @@
     <script defer src="/js/maska-nomera.js"></script>
     <script defer src = "/js/pop_up.js"></script>
     <script defer src = "/js/shop.js"></script>
-    <script defer src = "/js/orders.js?14"></script>
+    <script defer src = "/js/orders.js?15"></script>
 </head>
 <body class="overflow_y">
 <header id="header-section">
@@ -151,12 +151,9 @@
                 $sql = $pdo->prepare("INSERT INTO orders(`name`, `order_text`, `comment`, `sum`, `status`, `address`) VALUES (?, ?, ?, ?, ?, ?);");
                 $dbg = $sql->execute([$name, $order_text, $comment, $order_sum, $status, $order_address]);  
 
-                // if ($dbg) {
-                //     echo "Данные успешно добавлены в базу данных!";
-                // } else {
-                //     echo "Произошла ошибка при добавлении данных в базу данных:";
-                //     print_r($sql->errorInfo()); // Вывод информации об ошибке
-                // }                        
+                if ($dbg) {
+                    echo "<script>window.location.href='/order_ok.php';</script>";
+                }                      
 
             }
         ?>
