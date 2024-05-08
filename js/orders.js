@@ -5,6 +5,7 @@ let order_text = document.querySelector(".order_text");
 let error_text = document.querySelector(".order_error");
 let order_text_form = document.getElementById("order_text_form");
 let order_sum_form = document.getElementById("order_sum_form");
+let order_btn = document.getElementById("order_btn");
 
 error_text.style.display = "none";
 
@@ -32,6 +33,8 @@ function minus(id, name, price) {
 
 		if (sum <= 500) {
 			error_text.style.display = "none";
+			order_btn.disabled = false;
+			order_btn.style.backgroundColor = 'MediumPurple';
 		}
 
 		if (current_info[2] == 0) {
@@ -53,6 +56,8 @@ function plus(id, name, price) {
 
 	if (sum > 500) {
 		error_text.style.display = "block";
+		order_btn.disabled = true;
+		order_btn.style.backgroundColor = 'Gray';
 	}
 
 	orders.set(id, current_info);
