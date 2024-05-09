@@ -28,6 +28,7 @@
             $product_price = $row["price"];
             $product_image = $row["image"];
             $product_view = $row["view"];
+            $sale_price = $row["sale_price"];
         }
 
 
@@ -49,8 +50,14 @@
                         echo  $product_name;
                         echo "'";
                         echo '>
-                        <input name="price" type="number" required placeholder="Введите цену" value = "' . $product_price . '">
-                        <h3>Изображение: <a href="./images/shop/' . $product_image  .' "> ' . $product_image  . '</a></h3>';
+                        <input name="price" type="number" required placeholder="Введите цену" value = "' . $product_price . '">';
+                        echo '<input name="sale_price" type="number" placeholder="Введите цену со скидкой (необязательно)" value = "';
+                        if (!is_null($sale_price)) {
+                            echo $sale_price;
+                        }   
+                        echo '">';
+                        
+                        echo '<h3>Изображение: <a href="./images/shop/' . $product_image  .' "> ' . $product_image  . '</a></h3>';
 
             if ($product_view == 1) {
                 echo '<label>
@@ -101,6 +108,11 @@ if (isset($_POST['upload_btn'])) {
     $name = ucfirst($name);
     $price = $_POST['price'];
     $img = $_POST['img'];
+    $sale_price = $_POST['sale_price'];
+
+    if (empty($sale_price)) {
+        $sale_price = NULL;
+    }
 
     if(!empty($_POST['view'])){
         $view = 1;
@@ -133,13 +145,14 @@ if (isset($_POST['upload_btn'])) {
         }
     }
 
-    $sql = "UPDATE `shop` SET name = :name, price = :price, image = :image, view = :view  WHERE id = :product_id";
+    $sql = "UPDATE `shop` SET name = :name, price = :price, image = :image, view = :view, sale_price = :sale_price  WHERE id = :product_id";
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue(":product_id", $product_id);
     $stmt->bindValue(":name", $name);
     $stmt->bindValue(":price", $price);
     $stmt->bindValue(":image", $img);
     $stmt->bindValue(":view", $view);
+    $stmt->bindValue(":sale_price", $sale_price);
     $stmt->execute();
 
     echo "<script>window.location.href='/functions/admin/product_review.php';</script>";
