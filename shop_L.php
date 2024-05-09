@@ -13,12 +13,12 @@
     <link rel="preload" href="/fonts/Inter-Bold.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/segoeprint.woff" as="font" type="font/woff" crossorigin>
     <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/shop_for_orders.css?40">
+    <link rel="stylesheet" href="/css/shop_for_orders.css?42">
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script defer src="/js/maska-nomera.js"></script>
     <script defer src = "/js/pop_up.js"></script>
     <script defer src = "/js/shop.js"></script>
-    <script defer src = "/js/orders.js?15"></script>
+    <script defer src = "/js/orders.js?16"></script>
 </head>
 <body class="overflow_y">
 <header id="header-section">
@@ -101,7 +101,11 @@
                             $p_name = $row["name"];
                             $p_name = str_replace('"', " ", $p_name);
                             echo "','" . $p_name;
-                            echo "'," . $row["price"];
+                            if (!is_null($row["sale_price"])) {
+                                echo "'," . $row["sale_price"];
+                            } else {
+                                echo "'," . $row["price"];
+                            }
                             echo ')"';
                             echo '>-</div>
                         <h1 class = "product_count" id ="';
@@ -110,11 +114,22 @@
                         <div class = "product_btn" onclick="plus(';
                             echo "'00" . $row["id"];
                             echo "','" . $p_name;
-                            echo "'," . $row["price"];
+                            if (!is_null($row["sale_price"])) {
+                                echo "'," . $row["sale_price"];
+                            } else {
+                                echo "'," . $row["price"];
+                            }
                             echo')">+</div>
                     </div>
                     <div class="flex">
-                        <h3 class = "product_price">' . $row["price"] . '</h3>
+                        <h3 class = "product_price">';
+                        if (!is_null($row["sale_price"])) {
+                            echo '<span class = "strike">' . $row["price"] . '</span>';
+                            echo $row["sale_price"];
+                        } else {
+                            echo $row["price"];
+                        }                  
+                        echo '</h3>
                         <img class = "token" src = "/images/shop/gametocken.png">
                     </div>
                 </div>';

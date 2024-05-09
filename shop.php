@@ -13,7 +13,7 @@
     <link rel="preload" href="/fonts/Inter-Bold.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/segoeprint.woff" as="font" type="font/woff" crossorigin>
     <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/shop.css?12345678">
+    <link rel="stylesheet" href="/css/shop.css?12345679">
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script defer src="/js/maska-nomera.js"></script>
     <script defer src = "/js/pop_up.js"></script>
@@ -88,21 +88,30 @@
             $res = $stmt->fetchAll();
 
             foreach($res as $row) {
-                echo '
+                if ($row["view"] == 1) {
+                    echo '
                     <div class = " flex product_box">
                     <img class = "product_img" src = "/functions/admin/images/shop/' . $row["image"] . '">
                     <h2 class = "product_name">'. $row["name"] .'</h2>
                     <h3 class = "product_number">арт. 00' . $row["id"] . '</h3>
                     <div class="flex">
-                        <h3 class = "product_price">' . $row["price"] . '</h3>
+                        <h3 class = "product_price">';
+                            if (!is_null($row["sale_price"])) {
+                                echo '<span class = "strike">' . $row["price"] . '</span>';
+                                echo $row["sale_price"];
+                            } else {
+                                echo $row["price"];
+                            }   
+                        echo '</h3>
                         <img class = "token" src = "/images/shop/gametocken.png">
                     </div>
                 </div>';
+                }
             }
         ?>
         </div> 
-        <h4 class = "shop_header last_header">* Организатор акции оставляет за собой право заменить товар на аналогичный с сохранением потребительских свойств в случае, если исходный товар не доступен.</h4>
-                <h1 class = "section_header" style= "margin-bottom: 30px;">Правила</h1>
+        <h4 class = "shop_header last_header">* Организатор акции оставляет за собой право заменить товар на аналогичный с сохранением потребительских свойств в случае, если исходный товар недоступен.</h4>
+        <h1 class = "section_header" style= "margin-bottom: 30px;">Правила</h1>
         <div id = "question_block">
             <div class="spoiler_wrap">
                 <h2 class="spoiler_title">За что можно получить токены?
@@ -279,19 +288,19 @@
 </div>
 
 <div id = "preloader" class = "preloader">
-    <p id = "preloader_text">Идёт загрузка страницы<br>
-        Пожалуйста, подождите ... </p>
-    <div class = "preloader_loader">
-        <div class="loadingio-spinner-spin-xhfksgy9s2">
-            <div class="ldio-nzs6obxip0o">
-                <div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div>
+            <p id = "preloader_text">Идёт загрузка страницы<br>
+                Пожалуйста, подождите ... </p>
+            <div class = "preloader_loader">
+                <div class="loadingio-spinner-spin-xhfksgy9s2">
+                    <div class="ldio-nzs6obxip0o">
+                        <div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div>
+                    </div>
+                </div>
+                <span class = "preloader_percents">
+                <span id = "percent">0</span>%
+            </span>
             </div>
         </div>
-        <span class = "preloader_percents">
-                        <span id = "percent">0</span>%
-                    </span>
-    </div>
-</div>
 
 <a href="https://api.whatsapp.com/send?phone=79841953014">
     <div id = "whats_app" class="flex">
@@ -315,8 +324,7 @@
         <noscript><div><img src="https://mc.yandex.ru/watch/86582635" style="position:absolute; left:-9999px;" alt="" /></div>
         </noscript>
         <!-- /Yandex.Metrika counter --> 
-
-<script src = "/js/preloader.js"></script>
+        <script src = "/js/preloader.js"></script>
 </body>
 </html>
 <?php
