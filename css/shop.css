@@ -211,6 +211,15 @@ img {
     transform: rotate(180deg);
 }
 
+.strike {
+    text-decoration: line-through;
+    text-decoration-color: black;
+    text-decoration-thickness: 2px;
+    text-align: center;
+    color: grey; 
+    font-size: 20px;
+}
+
 @media only screen and (max-width: 640px) {
     #shop {
         padding: calc(var(--index) * 5) calc(var(--index) * 0.6) calc(var(--index) * 3) calc(var(--index) * 0.6);
@@ -290,5 +299,9 @@ img {
         height: calc(var(--index) * 1);
         top: calc(var(--index) * 2);
         right: calc(var(--index) * 2);
+    }
+
+    .strike {
+        font-size: 12px;
     }
 }
